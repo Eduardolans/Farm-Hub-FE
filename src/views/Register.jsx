@@ -5,12 +5,10 @@ import logic from '../logic';
 
 import Field from '../components/core/Field/Field';
 import Title from '../components/core/Title/Title';
-
-import { SystemError } from 'com/errors';
-
 import useContext from '../useContext';
 
 import './Register.css';
+import { SystemError } from '../../com/errors';
 
 function Register() {
     const navigate = useNavigate();

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Title from '../components/core/Title/Title';
 
-import { SystemError } from 'com/errors';
+import { SystemError } from '../../com/errors';
 import logic from '../logic';
 
 import useContext from '../useContext';

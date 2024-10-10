@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SystemError } from 'com/errors';
+import { SystemError } from '../../com/errors';
+
 import Title from '../components/core/Title/Title';
 import logic from '../logic';
 import useContext from '../useContext';

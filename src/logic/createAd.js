@@ -1,5 +1,5 @@
-import errors, { SystemError } from 'com/errors';
-import validate from 'com/validate';
+import errors, { SystemError } from './../../com/errors';
+import validate from './../../com/validate';
 
 const createAd = (title, description, price, contactInfo, geoLocation) => {
     validate.text(title, 'title', 50);

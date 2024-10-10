@@ -1,4 +1,4 @@
-import errors, { SystemError } from 'com/errors';
+import errors, { SystemError } from './../../com/errors';
 import { getUserLocation } from '../utils/getUserLocation';
 
 const searchAds = (searchText, userLocation) => {

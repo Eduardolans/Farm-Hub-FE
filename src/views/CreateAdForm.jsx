@@ -6,7 +6,7 @@ import logic from '../logic';
 
 import useContext from '../useContext';
 
-import { SystemError } from 'com/errors';
+import { SystemError } from '../../com/errors';
 
 import Title from '../components/core/Title/Title';
 

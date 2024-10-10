@@ -1,4 +1,4 @@
-import errors, { SystemError } from 'com/errors';
+import errors, { SystemError } from './../../com/errors';
 
 import extractPayloadFromJWT from '../utils/extractPayloadFromJWT';
 
@@ -41,7 +41,7 @@ const getUsername = () => {
 
 export default getUsername;
 
-// import errors, { SystemError, CredentialsError } from 'com/errors'
+// import errors, { SystemError, CredentialsError } from './../../com/errors'
 // import extractPayloadFromJWT from '../utils/extractPayloadFromJWT'
 
 // const getUsername = () => {

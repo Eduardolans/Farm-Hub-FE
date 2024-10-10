@@ -1,4 +1,4 @@
-import { SystemError } from 'com/errors';
+import { SystemError } from './../../com/errors';
 
 export const getUserLocation = () => {
     return new Promise((resolve, reject) => {
@@ -20,7 +20,7 @@ export const getUserLocation = () => {
     });
 };
 
-// import errors, { SystemError } from 'com/errors';
+// import errors, { SystemError } from './../../com/errors';
 
 // const getUserLocation = () => {
 //     return new Promise((resolve, reject) => {

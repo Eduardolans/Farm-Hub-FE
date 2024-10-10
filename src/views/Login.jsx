@@ -6,7 +6,7 @@ import Field from '../components/core/Field/Field';
 import Button from '../components/core/Button/Button';
 import Title from '../components/core/Title/Title';
 
-import { SystemError } from 'com/errors';
+import { SystemError } from '../../com/errors';
 
 import useContext from '../useContext';
 
