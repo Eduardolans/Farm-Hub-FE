@@ -9,8 +9,6 @@ const ID_REGEX = /^[0-9a-z]+$/;
 const PRICE_REGEX = /^\d+(\.\d{1,2})? €\/Kg$/;
 const LOCATION_REGEX = /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/;
 
-//  /^\s* [-+] ? ([1 - 8] ?\d(\.\d +) ?| 90(\.0 +) ?), \s * [-+] ? ((1[0 - 7]\d(\.\d +) ?| 180(\.0 +) ?)| ([1 - 9] ?\d(\.\d +) ?)) \s * $/;
-
 function validateName(name, explain = 'name') {
     if (typeof name !== 'string' || !NAME_REGEX.test(name))
         throw new ContentError(`${explain} is not valid`);
