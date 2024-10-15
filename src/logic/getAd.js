@@ -37,3 +37,4 @@ const getAd = (adId) => {
 };
 
 export default getAd;
+//
