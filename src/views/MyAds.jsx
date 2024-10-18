@@ -13,6 +13,7 @@ import './MyAds.css';
 
 export const MyAds = () => {
     const [userAds, setUserAds] = useState([]);
+    const [isLoadingAds, setIsLoadingAds] = useState(true);
 
     const navigate = useNavigate();
 
@@ -28,13 +29,16 @@ export const MyAds = () => {
                 .getUserAds()
                 .then((userAds) => {
                     setUserAds(userAds);
+                    setIsLoadingAds(false);
                 })
                 .catch((error) => {
+                    setIsLoadingAds(false);
                     if (error instanceof SystemError) {
                         alert(error.message);
                     }
                 });
         } catch (error) {
+            setIsLoadingAds(false);
             alert(error.message);
         }
     };
@@ -57,7 +61,7 @@ export const MyAds = () => {
             />
 
             {!userAds ||
-                (userAds.length === 0 && (
+                (userAds.length === 0 && !isLoadingAds && (
                     <p className="UserAdListEmpty">There are no ads found</p>
                 ))}
 

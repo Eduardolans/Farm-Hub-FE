@@ -29,7 +29,8 @@ function Header({ user }) {
             <header>
                 <div className="Header">
                     <h1 className="UsernameTitle">
-                        {user.username ? user.username : 'notloggedin'}
+                        {user?.username && user.username}
+                        {/* {user.username ? user.username : ''} */}
                     </h1>
                     <Title>Farm-Hub</Title>
                     <div className="ButtonsContainer">

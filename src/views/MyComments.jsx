@@ -14,6 +14,8 @@ import './MyComments.css';
 export const MyComments = () => {
     const [userComments, setUserComments] = useState([]);
 
+    const [isLoadingAds, setIsLoadingAds] = useState(true);
+
     const navigate = useNavigate();
 
     const { alert } = useContext();
@@ -28,13 +30,16 @@ export const MyComments = () => {
                 .getUserComments()
                 .then((comments) => {
                     setUserComments(comments);
+                    setIsLoadingAds(false);
                 })
                 .catch((error) => {
+                    setIsLoadingAds(false);
                     if (error instanceof SystemError) {
                         alert(error.message);
                     }
                 });
         } catch (error) {
+            setIsLoadingAds(false);
             alert(error.message);
         }
     };
@@ -57,7 +62,7 @@ export const MyComments = () => {
             />
 
             {!userComments ||
-                (userComments.length === 0 && (
+                (userComments.length === 0 && !isLoadingAds && (
                     <p className="UserCommentsListEmpty">
                         There are no comments found
                     </p>
