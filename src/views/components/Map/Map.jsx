@@ -22,9 +22,9 @@ export const MapComponent = ({ geolocation }) => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker position={position}>
-                <Popup>
+                {/* <Popup>
                     A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
+                </Popup> */}
             </Marker>
         </MapContainer>
     );
