@@ -53,8 +53,11 @@ function Home() {
     };
 
     const handleLocationUpdate = (location) => {
+        console.log('User Location in Home: ', location);
         setUserLocation(location);
     };
+
+    console.log('User Location in Home: ', userLocation);
 
     return (
         <>
