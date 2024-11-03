@@ -177,4 +177,6 @@ function Home() {
     );
 }
 
+console.log('User Location in Home');
+
 export default Home;
