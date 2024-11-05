@@ -50,7 +50,6 @@ function Home() {
         try {
             getUserLocation()
                 .then((location) => {
-                    console.log('User Location in Home: ', location);
                     setUserLocation(location);
                 })
                 .catch((error) => {
@@ -96,7 +95,5 @@ function Home() {
         </>
     );
 }
-
-console.log('User Location in Home');
 
 export default Home;

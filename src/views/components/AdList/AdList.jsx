@@ -14,13 +14,9 @@ function AdList({ searchText, userLocation }) {
 
     useEffect(() => {
         setIsLoading(true);
-        console.log('Entra en useEffect de AdList', searchText);
-        console.log('userLocation', userLocation);
         if (searchText && userLocation) {
-            console.log('Entras?: ', searchText);
             loadFilteredAds(searchText, userLocation);
         } else if (!searchText) {
-            console.log('No filter: ', searchText);
             loadAds();
         }
     }, [searchText]);
