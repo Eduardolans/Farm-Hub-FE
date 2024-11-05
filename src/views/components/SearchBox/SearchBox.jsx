@@ -1,41 +1,13 @@
 import { useEffect, useState } from 'react';
 import backArrow from '../../../icons/backArrow.png';
-
-import { getUserLocation } from '../../../utils/getUserLocation';
-
-import useContext from '../../../useContext';
-
 import './SearchBox.css';
 
-function SearchBox({ onSearch, initialSearchText, onLocationUpdate }) {
+function SearchBox({ onSearch, initialSearchText }) {
     const [searchText, setSearchText] = useState(initialSearchText || '');
-
-    const { alert } = useContext();
 
     useEffect(() => {
         setSearchText(initialSearchText || '');
     }, [initialSearchText]);
-
-    useEffect(() => {
-        fetchUserLocation();
-    }, []);
-
-    const fetchUserLocation = () => {
-        try {
-            getUserLocation()
-                .then((location) => {
-                    onLocationUpdate(location);
-                })
-                .catch((error) => {
-                    alert('Error getting user location:', error.message);
-                });
-        } catch (error) {
-            alert(
-                'Geolocation may not be enabled or is not supported by your browser:',
-                error.message
-            );
-        }
-    };
 
     const handleClearSearch = () => {
         setSearchText('');

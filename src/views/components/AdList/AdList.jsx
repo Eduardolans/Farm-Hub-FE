@@ -14,13 +14,16 @@ function AdList({ searchText, userLocation }) {
 
     useEffect(() => {
         setIsLoading(true);
-
+        console.log('Entra en useEffect de AdList', searchText);
+        console.log('userLocation', userLocation);
         if (searchText && userLocation) {
+            console.log('Entras?: ', searchText);
             loadFilteredAds(searchText, userLocation);
         } else if (!searchText) {
+            console.log('No filter: ', searchText);
             loadAds();
         }
-    }, [searchText, userLocation]);
+    }, [searchText]);
 
     const loadFilteredAds = (searchText, userLocation) => {
         try {
@@ -83,7 +86,14 @@ function AdList({ searchText, userLocation }) {
                     <li
                         key={ad._id}
                         className="AdListItem"
-                        onClick={() => navigate(`/adpage/${ad._id}`)}
+                        onClick={() =>
+                            navigate(`/adpage/${ad._id}`, {
+                                state: {
+                                    prevSearch: searchText,
+                                    prevLocation: userLocation,
+                                },
+                            })
+                        }
                     >
                         <div className="AdListItemContent">
                             <div className="AdListItemHeader">
