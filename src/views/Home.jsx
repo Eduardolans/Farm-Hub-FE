@@ -6,6 +6,7 @@ import SearchBox from './components/SearchBox/SearchBox';
 import { CreateAdButton } from './components/CreateAdButton/CreateAdButton';
 import Header from './components/Header/Header';
 import useContext from '../useContext';
+import { getUserLocation } from '../utils/getUserLocation';
 
 import './Home.css';
 
@@ -16,18 +17,19 @@ function Home() {
 
     const { alert } = useContext();
     const navigate = useNavigate();
-    const { search } = useLocation();
+    const location = useLocation();
 
-    const searchParams = new URLSearchParams(search);
+    const searchParams = new URLSearchParams(location.search);
     const q = searchParams.get('q');
 
     useEffect(() => {
-        fetchUsername();
-    }, []);
+        setCurrentSearchText(q || '');
+    }, [q]);
 
     useEffect(() => {
-        setCurrentSearchText(q || '');
-    }, [search]);
+        fetchUsername();
+        fetchUserLocation();
+    }, []);
 
     const fetchUsername = () => {
         try {
@@ -44,16 +46,33 @@ function Home() {
         }
     };
 
-    const handleSearch = (text) => {
-        if (text) {
-            navigate(`/?q=${text}`);
-        } else {
-            navigate('/');
+    const fetchUserLocation = () => {
+        try {
+            getUserLocation()
+                .then((location) => {
+                    console.log('User Location in Home: ', location);
+                    setUserLocation(location);
+                })
+                .catch((error) => {
+                    alert('Error getting user location:', error.message);
+                });
+        } catch (error) {
+            alert(
+                'Geolocation may not be enabled or is not supported by your browser:',
+                error.message
+            );
         }
     };
 
-    const handleLocationUpdate = (location) => {
-        setUserLocation(location);
+    const handleSearch = (text) => {
+        setCurrentSearchText(text);
+        fetchUserLocation();
+        if (text) {
+            navigate(`/?q=${text}`);
+        } else {
+            setCurrentSearchText('');
+            navigate('/');
+        }
     };
 
     return (
@@ -64,17 +83,20 @@ function Home() {
                     <SearchBox
                         onSearch={handleSearch}
                         initialSearchText={currentSearchText}
-                        onLocationUpdate={handleLocationUpdate}
                     />
-                    <AdList
-                        searchText={currentSearchText}
-                        userLocation={userLocation}
-                    />
+                    {userLocation && (
+                        <AdList
+                            searchText={currentSearchText}
+                            userLocation={userLocation}
+                        />
+                    )}
                 </main>
                 <CreateAdButton />
             </div>
         </>
     );
 }
+
+console.log('User Location in Home');
 
 export default Home;

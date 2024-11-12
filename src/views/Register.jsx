@@ -13,7 +13,7 @@ import { SystemError } from '../../com/errors';
 function Register() {
     const navigate = useNavigate();
 
-    const [message, setMessage] = useState('');
+    const [message] = useState('');
 
     const { alert } = useContext();
 

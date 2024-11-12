@@ -1,32 +1,24 @@
 import { useEffect, useState } from 'react';
-
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import logic from '../logic';
 import Title from '../components/core/Title/Title';
-
 import CreateComment from './components/CreateCommnet/CreateComment';
 import DeleteAdComment from './components/DeleteAdComment/DeleteAdComment';
-
 import backArrow from '../icons/backArrow.png';
-
 import useContext from '../useContext';
-
 import { MapComponent } from './components/Map/Map';
-
 import './AdPage.css';
 
 function AdPage() {
     const navigate = useNavigate();
-
+    const location = useLocation();
     const [ad, setAd] = useState(null);
-
     const { adId } = useParams();
-
     const { alert } = useContext();
 
     useEffect(() => {
         loadAd();
-    }, []);
+    }, [adId]);
 
     const loadAd = () => {
         try {
@@ -35,7 +27,6 @@ function AdPage() {
                 .then((ad) => {
                     setAd(ad);
                 })
-
                 .catch((error) => {
                     alert(error.message);
                 });
@@ -43,6 +34,18 @@ function AdPage() {
             alert(error.message);
         }
     };
+
+    const handleGoBack = () => {
+        const { prevSearch, prevLocation } = location.state || {};
+        if (prevSearch) {
+            navigate(`/?q=${prevSearch}`, {
+                state: { userLocation: prevLocation },
+            });
+        } else {
+            navigate('/');
+        }
+    };
+
     if (ad === null) {
         return <h1 className="AdPageLoading">Loading...</h1>;
     }
@@ -54,7 +57,7 @@ function AdPage() {
             <img
                 src={backArrow}
                 alt="Go back"
-                onClick={() => navigate(-1)}
+                onClick={handleGoBack}
                 className="AdPageBackButton"
             />
             <Title className="AdPageTitle">{ad.title}</Title>
@@ -71,13 +74,9 @@ function AdPage() {
             </div>
 
             {ad.geoLocation && (
-                <>
-                    <div className="relative -z-10">
-                        <MapComponent
-                            geolocation={ad.geoLocation}
-                        ></MapComponent>
-                    </div>
-                </>
+                <div className="relative -z-10">
+                    <MapComponent geolocation={ad.geoLocation} />
+                </div>
             )}
 
             <div className="AdPageCommentsSection">
@@ -115,132 +114,3 @@ function AdPage() {
 }
 
 export default AdPage;
-
-// import { useEffect, useState } from 'react';
-// import { useNavigate, useParams } from 'react-router-dom';
-// import logic from '../logic';
-// import Title from '../components/core/Title/Title';
-// import CreateComment from './components/CreateCommnet/CreateComment';
-// import DeleteAdComment from './components/DeleteAdComment/DeleteAdComment';
-// import backArrow from '../icons/backArrow.png';
-// import useContext from '../useContext';
-// import { MapComponent } from './components/Map/Map';
-// import Button from '../components/core/Button/Button';
-// import './AdPage.css';
-
-// function AdPage() {
-//     const navigate = useNavigate();
-//     const [ad, setAd] = useState(null);
-//     const { adId } = useParams();
-//     const { alert } = useContext();
-//     const [commentToDelete, setCommentToDelete] = useState(null);
-
-//     useEffect(() => {
-//         loadAd();
-//     }, []);
-
-//     const loadAd = () => {
-//         try {
-//             logic
-//                 .getAd(adId)
-//                 .then((ad) => {
-//                     setAd(ad);
-//                 })
-//                 .catch((error) => {
-//                     alert(error.message);
-//                 });
-//         } catch (error) {
-//             alert(error.message);
-//         }
-//     };
-
-//     const handleAdCommentSubmit = () => loadAd();
-
-//     const handleDeleteComment = (comment) => {
-//         setCommentToDelete(comment);
-//     };
-
-//     const handleCommentDeleted = () => {
-//         setCommentToDelete(null);
-//         loadAd();
-//     };
-
-//     if (ad === null) {
-//         return <h1 className="AdPageLoading">Loading...</h1>;
-//     }
-
-//     return (
-//         <div className="AdPageContainer">
-//             <img
-//                 src={backArrow}
-//                 alt="Go back"
-//                 onClick={() => navigate(-1)}
-//                 className="AdPageBackButton"
-//             />
-//             <Title className="AdPageTitle">{ad.title}</Title>
-//             <div className="AdPageDetails">
-//                 <p className="AdPageAuthor">Posted by: {ad?.author.username}</p>
-//                 <p className="AdPageDescription">{ad?.description}</p>
-//                 <p className="AdPagePrice">Price: ${ad?.price}</p>
-//                 <p className="AdPageDate">
-//                     Posted on: {new Date(ad?.date).toLocaleDateString()}
-//                 </p>
-//                 <p className="AdPageContactInfo">
-//                     Contact Info: {ad?.contactInfo}
-//                 </p>
-//             </div>
-
-//             {ad.geoLocation && (
-//                 <div>
-//                     <MapComponent geolocation={ad.geoLocation} />
-//                 </div>
-//             )}
-
-//             <div className="AdPageCommentsSection">
-//                 <h2 className="AdPageCommentsTitle">Comments</h2>
-//                 <CreateComment
-//                     adId={adId}
-//                     onAdCommentSubmitted={handleAdCommentSubmit}
-//                 />
-
-//                 <div className="AdPageCommentsList">
-//                     {ad.adcomments.map((comment) => (
-//                         <div key={comment._id} className="AdPageComment">
-//                             <p className="AdPageCommentText">
-//                                 {comment.comment}
-//                             </p>
-//                             <div className="AdPageCommentFooter">
-//                                 <span className="AdPageCommentAuthor">
-//                                     {comment.author.username}
-//                                 </span>
-//                                 {comment.author._id ===
-//                                     sessionStorage.userId && (
-//                                     <Button
-//                                         className="DeleteAdCommentButton"
-//                                         onClick={() =>
-//                                             handleDeleteComment(comment)
-//                                         }
-//                                         type="button"
-//                                     >
-//                                         Delete
-//                                     </Button>
-//                                 )}
-//                             </div>
-//                         </div>
-//                     ))}
-//                 </div>
-//             </div>
-
-//             {commentToDelete && (
-//                 <DeleteAdComment
-//                     adId={adId}
-//                     commentId={commentToDelete._id}
-//                     onCommentDeleted={handleCommentDeleted}
-//                     onCancel={() => setCommentToDelete(null)}
-//                 />
-//             )}
-//         </div>
-//     );
-// }
-
-// export default AdPage;
