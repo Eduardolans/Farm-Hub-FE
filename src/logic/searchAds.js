@@ -1,5 +1,4 @@
 import errors, { SystemError } from './../../com/errors';
-import { getUserLocation } from '../utils/getUserLocation';
 
 const searchAds = (searchText, userLocation) => {
     let url = `${import.meta.env.VITE_API_URL}/searchads/${searchText}`;

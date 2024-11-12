@@ -1,6 +1,6 @@
 import './Confirm.css';
 
-export default ({ message, onAccept, onCancel }) => (
+const Confirm = ({ message, onAccept, onCancel }) => (
     <div className="Confirm">
         <div className="ConfirmBox">
             <p>{message}</p>
@@ -13,3 +13,5 @@ export default ({ message, onAccept, onCancel }) => (
         </div>
     </div>
 );
+
+export default Confirm;

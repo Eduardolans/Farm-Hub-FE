@@ -1,13 +1,14 @@
 import { ContentError, MatchError } from './errors.js';
 
+// eslint-disable-next-line no-useless-escape
 const NAME_REGEX = /^[a-zA-Z=\[\]\{\}\<\>\(\)]{1,}$/;
 const USERNAME_REGEX = /^[\w-]+$/;
-const PASSWORD_REGEX = /^[\w-$%&=\[\]\{\}\<\>\(\)]{8,}$/;
+const PASSWORD_REGEX = /^[\w-$%&=[\]{}()<>]{8,}$/;
 const EMAIL_REGEX =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const ID_REGEX = /^[0-9a-z]+$/;
 const PRICE_REGEX = /^\d+(\.\d{1,2})? €\/Kg$/;
-const LOCATION_REGEX = /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/;
+// const LOCATION_REGEX = /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/;
 
 function validateName(name, explain = 'name') {
     if (typeof name !== 'string' || !NAME_REGEX.test(name))

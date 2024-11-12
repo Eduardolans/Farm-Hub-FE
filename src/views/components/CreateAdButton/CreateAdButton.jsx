@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './CreateAdButton.css';
 
-export const CreateAdButton = ({}) => {
+export const CreateAdButton = () => {
     const navigate = useNavigate();
 
     return (
