@@ -19,13 +19,15 @@ function AdList({ searchText, userLocation }) {
         if (searchText && userLocation) {
             console.log('Entras?: ', searchText);
             loadFilteredAds(searchText, userLocation);
-        } else if (!searchText) {
+        } else if (!searchText && !userLocation) {
             console.log('No filter: ', searchText);
             loadAds();
         }
-    }, [searchText]);
+    }, [searchText, userLocation]);
 
     const loadFilteredAds = (searchText, userLocation) => {
+        console.log('get in?: ', userLocation);
+
         try {
             logic
                 .searchAds(searchText, userLocation)
