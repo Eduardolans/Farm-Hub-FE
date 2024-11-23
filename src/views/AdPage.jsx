@@ -39,7 +39,7 @@ function AdPage() {
         const { prevSearch, prevLocation } = location.state || {};
         if (prevSearch) {
             navigate(`/?q=${prevSearch}`, {
-                state: { userLocation: prevLocation, searchText: prevSearch },
+                state: { userLocation: prevLocation },
             });
         } else {
             navigate('/');

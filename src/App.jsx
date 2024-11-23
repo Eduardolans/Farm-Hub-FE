@@ -29,6 +29,70 @@ function App() {
 
     const handleAlertAccept = () => setMessage(null);
 
+    // return (
+    //     <Context.Provider value={{ alert: handleMessage }}>
+    //         <Routes>
+    //             <Route path="/login" element={<RenderLogin />} />
+    //             <Route path="/register" element={<RenderRegister />} />
+    //             {/* <Route path="/*" element={<Notfound />} /> */}
+    //         </Routes>
+
+    //         <LocationProvider>
+    //             <Routes>
+    //                 <Route path="/" element={<RenderHome />} />
+
+    //                 <Route path="/createad" element={<CreateAdForm />}></Route>
+    //                 <Route path="/adpage/:adId" element={<AdPage />}></Route>
+    //                 <Route
+    //                     path="updateadform/:adId"
+    //                     element={<UpdateAdForm />}
+    //                 ></Route>
+
+    //                 <Route path="/myaccount" element={<MyAccount />}></Route>
+
+    //                 <Route path="/myads" element={<MyAds />}></Route>
+
+    //                 <Route path="/mycomments" element={<MyComments />}></Route>
+    //             </Routes>
+    //         </LocationProvider>
+
+    //         {message && (
+    //             <Alert message={message} onAccept={handleAlertAccept} />
+    //         )}
+    //     </Context.Provider>
+    // );
+
+    // return (
+    //     <Context.Provider value={{ alert: handleMessage }}>
+    //         {/* Rutas que no necesitan Location.Provider */}
+    //         <Routes>
+    //             <Route path="/login" element={<RenderLogin />} />
+    //             <Route path="/register" element={<RenderRegister />} />
+    //             <Route path="/*" element={<Notfound />} />
+    //         </Routes>
+
+    //         {/* Rutas que necesitan Location.Provider */}
+    //         <LocationProvider>
+    //             <Routes>
+    //                 <Route path="/" element={<RenderHome />} />
+    //                 <Route path="/createad" element={<CreateAdForm />} />
+    //                 <Route path="/adpage/:adId" element={<AdPage />} />
+    //                 <Route
+    //                     path="/updateadform/:adId"
+    //                     element={<UpdateAdForm />}
+    //                 />
+    //                 <Route path="/myaccount" element={<MyAccount />} />
+    //                 <Route path="/myads" element={<MyAds />} />
+    //                 <Route path="/mycomments" element={<MyComments />} />
+    //             </Routes>
+    //         </LocationProvider>
+
+    //         {message && (
+    //             <Alert message={message} onAccept={handleAlertAccept} />
+    //         )}
+    //     </Context.Provider>
+    // );
+
     return (
         <Context.Provider value={{ alert: handleMessage }}>
             <Routes>
