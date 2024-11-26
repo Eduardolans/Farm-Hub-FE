@@ -13,7 +13,6 @@ export const MapComponent = ({ geolocation }) => {
     const position = new LatLng(lat, lng);
     const icon = L.icon({
         iconUrl: '/marker-location.png',
-        // shadowUrl: '/marker-location.png',
         iconSize: [42, 42],
     });
 

@@ -17,7 +17,6 @@ export const LocationProvider = ({ children }) => {
                             longitude: position.coords.longitude,
                         };
                         setUserLocation(newUserLocation);
-                        console.log('User Location in Home: ', newUserLocation);
                     },
                     (error) => {
                         alert('Error getting user location:', error.message);

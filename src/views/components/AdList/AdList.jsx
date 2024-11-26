@@ -12,10 +12,6 @@ function AdList({ searchText, userLocation }) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        console.log('AdList useEffect triggered');
-        console.log('searchText:', searchText);
-        console.log('userLocation:', userLocation);
-
         let isMounted = true;
         setIsLoading(true);
 
@@ -23,16 +19,13 @@ function AdList({ searchText, userLocation }) {
             try {
                 let fetchedAds;
                 if (searchText && userLocation) {
-                    console.log('Fetching filtered ads');
                     fetchedAds = await logic.searchAds(
                         searchText,
                         userLocation
                     );
                 } else {
-                    console.log('Fetching all ads');
                     fetchedAds = await logic.getAllAds();
                 }
-                console.log('Fetched ads:', fetchedAds);
                 if (isMounted) {
                     setAds(fetchedAds);
                     setIsLoading(false);

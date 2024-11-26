@@ -10,19 +10,15 @@ import { CreateAdButton } from './components/CreateAdButton/CreateAdButton';
 import Header from './components/Header/Header';
 import useContext from '../useContext';
 import { ContextForLocation } from '../LocationContext';
-// import { useLocation } from '../utils/useLocation';
-// import { getUserLocation } from '../utils/getUserLocation';
 
 import './Home.css';
 
 function Home() {
     const [user, setUser] = useState('');
     const [currentSearchText, setCurrentSearchText] = useState('');
-    // const [userLocation, setUserLocation] = useState(null);
 
     const { alert } = useContext();
     const navigate = useNavigate();
-    // const { userLocation, setUserLocation } = useLocation();
     const { userLocation, fetchUserLocation } = ContextForLocation();
 
     const routerLocation = useRouterLocation();
@@ -52,24 +48,6 @@ function Home() {
             alert(error.message);
         }
     };
-
-    // const fetchUserLocation = () => {
-    //     try {
-    //         getUserLocation()
-    //             .then((location) => {
-    //                 console.log('User Location in Home: ', location);
-    //                 setUserLocation(location);
-    //             })
-    //             .catch((error) => {
-    //                 alert('Error getting user location:', error.message);
-    //             });
-    //     } catch (error) {
-    //         alert(
-    //             'Geolocation may not be enabled or is not supported by your browser:',
-    //             error.message
-    //         );
-    //     }
-    // };
 
     const handleSearch = (text) => {
         setCurrentSearchText(text);
