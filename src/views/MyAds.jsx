@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Title from '../components/core/Title/Title';
+import { Ad } from '../views/components/Ad/Ad';
 
 import { SystemError } from '../../com/errors';
 import logic from '../logic';
@@ -57,7 +58,7 @@ export const MyAds = () => {
                 className="absolute left-3 top-3 w-11 bg-transparent cursor-pointer text-black font-bold"
                 src={backArrow}
                 alt="Go back"
-                onClick={() => navigate(-1)}
+                onClick={() => navigate('/')}
             />
 
             {!userAds ||
@@ -98,6 +99,14 @@ export const MyAds = () => {
                                     </li>
                                 ))}
                             </ul>
+                        </div>
+                        <div className="UserAdActions">
+                            {sessionStorage.userId === userAd.author._id && (
+                                <Ad
+                                    ad={userAd}
+                                    onAdDeleted={() => loadUserAds()}
+                                />
+                            )}
                         </div>
                     </li>
                 ))}

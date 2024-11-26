@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Ad } from '../Ad/Ad';
 import { Time } from '../../../components/core/Time/Time';
 import logic from '../../../logic';
 import useContext from '../../../useContext';
@@ -13,51 +12,40 @@ function AdList({ searchText, userLocation }) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        let isMounted = true;
         setIsLoading(true);
-        if (searchText && userLocation) {
-            loadFilteredAds(searchText, userLocation);
-        } else if (!searchText) {
-            loadAds();
-        }
-    }, [searchText]);
 
-    const loadFilteredAds = (searchText, userLocation) => {
-        try {
-            logic
-                .searchAds(searchText, userLocation)
-                .then((searchedAds) => {
-                    setAds(searchedAds);
-                    setIsLoading(false);
-                })
-                .catch((error) => {
-                    setAds([]);
-                    alert(error.message);
-                    setIsLoading(false);
-                });
-        } catch (error) {
-            setAds([]);
-            alert(error.message);
-            setIsLoading(false);
-        }
-    };
-
-    const loadAds = () => {
-        try {
-            logic
-                .getAllAds()
-                .then((fetchedAds) => {
+        const fetchAds = async () => {
+            try {
+                let fetchedAds;
+                if (searchText && userLocation) {
+                    fetchedAds = await logic.searchAds(
+                        searchText,
+                        userLocation
+                    );
+                } else {
+                    fetchedAds = await logic.getAllAds();
+                }
+                if (isMounted) {
                     setAds(fetchedAds);
                     setIsLoading(false);
-                })
-                .catch((error) => {
+                }
+            } catch (error) {
+                if (isMounted) {
+                    console.error('Error loading ads:', error);
                     alert(error.message);
+                    setAds([]);
                     setIsLoading(false);
-                });
-        } catch (error) {
-            alert(error.message);
-            setIsLoading(false);
-        }
-    };
+                }
+            }
+        };
+
+        fetchAds();
+
+        return () => {
+            isMounted = false;
+        };
+    }, [searchText, userLocation, alert]);
 
     if (isLoading) {
         return (
@@ -105,11 +93,6 @@ function AdList({ searchText, userLocation }) {
                                 {ad.description}
                             </p>
                             <p className="AdListItemPrice">{ad.price}</p>
-                        </div>
-                        <div className="AdListItemActions">
-                            {sessionStorage.userId === ad.author._id && (
-                                <Ad ad={ad} onAdDeleted={loadAds} />
-                            )}
                         </div>
                     </li>
                 ))}

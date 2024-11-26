@@ -32,4 +32,7 @@
     .AdComment > small {
         @apply p-1 font-black;
     }
+    .UserAdActions {
+        @apply mt-2 flex justify-center;
+    }
 }

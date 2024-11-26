@@ -9,7 +9,7 @@ import Button from '../../../components/core/Button/Button';
 import './CreateComment.css';
 
 function CreateComment({ adId, onAdCommentSubmitted }) {
-    const [message, setMessage] = useState('');
+    const [message] = useState('');
 
     const { alert } = useContext();
 

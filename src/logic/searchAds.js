@@ -1,11 +1,10 @@
 import errors, { SystemError } from './../../com/errors';
-import { getUserLocation } from '../utils/getUserLocation';
 
 const searchAds = (searchText, userLocation) => {
     let url = `${import.meta.env.VITE_API_URL}/searchads/${searchText}`;
 
-    if (userLocation && userLocation.lat && userLocation.lng) {
-        url += `?lat=${userLocation.lat}&lng=${userLocation.lng}`;
+    if (userLocation && userLocation.latitude && userLocation.longitude) {
+        url += `?lat=${userLocation.latitude}&lng=${userLocation.longitude}`;
     }
 
     return fetch(url, {
