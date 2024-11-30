@@ -1,0 +1,26 @@
+name: PR Lint
+
+on:
+  pull_request:
+    # types: [opened, synchronize, reopened, edited]
+    branches: 
+      - main
+      - develop
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: load nodejs
+        uses: actions/setup-node@v4
+        with: 
+          node-version: '20'
+
+      - name: install dependencies
+        run: npm install
+        
+      - name: Run Super-Linter
+        run: npm run lint
+        
