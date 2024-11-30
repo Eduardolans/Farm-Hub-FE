@@ -36,8 +36,12 @@ function AdPage() {
     };
 
     const handleGoBack = () => {
-        const { prevSearch, prevLocation } = location.state || {};
-        if (prevSearch) {
+        const { from, prevSearch, prevLocation } = location.state || {};
+        if (from === 'MyAds') {
+            navigate('/myads');
+        } else if (from === 'MyComments') {
+            navigate('/mycomments');
+        } else if (prevSearch) {
             navigate(`/?q=${prevSearch}`, {
                 state: { userLocation: prevLocation },
             });
