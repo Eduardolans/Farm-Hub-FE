@@ -45,7 +45,7 @@ export const MyAds = () => {
     };
 
     const handleGoToAd = (adId) => {
-        navigate(`/adpage/${adId}`);
+        navigate(`/adpage/${adId}`, { state: { from: 'MyAds' } });
     };
 
     return (
