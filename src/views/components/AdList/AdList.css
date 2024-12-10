@@ -2,7 +2,7 @@
 
 @layer components {
     .AdListContainer {
-        @apply max-w-4xl mx-auto p-4 mt-[60px];
+        @apply max-w-4xl mx-auto p-4 mt-[110px];
     }
 
     .AdList {
