@@ -80,13 +80,9 @@ function validateGeoLocation(geoLocation, explain = 'geoLocation') {
 }
 
 function validateMaxDistance(maxDistance, explain = 'maxDistance') {
-    if (
-        typeof maxDistance !== 'number' ||
-        maxDistance < 0 ||
-        maxDistance > 50
-    ) {
+    if (typeof maxDistance !== 'number' && maxDistance < 1) {
         throw new ContentError(
-            `${explain} is not valid: must be a number between 0 and 50`
+            `${explain} is not valid: must be a number above 0`
         );
     }
 }
