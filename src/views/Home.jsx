@@ -3,25 +3,25 @@ import {
     useLocation as useRouterLocation,
     useNavigate,
 } from 'react-router-dom';
-import logic from '../logic';
 import AdList from './components/AdList/AdList';
 import SearchBox from './components/SearchBox/SearchBox';
 import { CreateAdButton } from './components/CreateAdButton/CreateAdButton';
 import Header from './components/Header/Header';
 import useContext from '../useContext';
 import { ContextForLocation } from '../LocationContext';
+import { ContextForUser } from '../UserContext';
 import DistanceRangeSlider from './Settings';
 
 import './Home.css';
 
 function Home() {
-    const [user, setUser] = useState('');
     const [currentSearchText, setCurrentSearchText] = useState('');
     const [distance, setDistance] = useState(50);
 
     const { alert } = useContext();
     const navigate = useNavigate();
     const { userLocation, fetchUserLocation } = ContextForLocation();
+    const { currentUser, fetchCurrentUser, isLoading } = ContextForUser();
 
     const routerLocation = useRouterLocation();
 
@@ -33,23 +33,12 @@ function Home() {
     }, [q]);
 
     useEffect(() => {
-        fetchUsername();
-    }, []);
-
-    const fetchUsername = () => {
-        try {
-            logic
-                .getUsername()
-                .then((user) => {
-                    setUser(user);
-                })
-                .catch((error) => {
-                    alert(error.message);
-                });
-        } catch (error) {
-            alert(error.message);
+        if (!currentUser && !isLoading) {
+            fetchCurrentUser().catch((error) => {
+                alert('Failed to fetch user information: ' + error.message);
+            });
         }
-    };
+    }, [currentUser, fetchCurrentUser, isLoading, alert]);
 
     const handleSearch = (text) => {
         setCurrentSearchText(text);
@@ -62,9 +51,13 @@ function Home() {
         }
     };
 
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
+
     return (
         <>
-            <Header user={user} />
+            <Header user={currentUser} />
             <div className="HomeContainer">
                 <main className="Home">
                     <SearchBox
