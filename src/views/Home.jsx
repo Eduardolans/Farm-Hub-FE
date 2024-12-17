@@ -10,12 +10,14 @@ import { CreateAdButton } from './components/CreateAdButton/CreateAdButton';
 import Header from './components/Header/Header';
 import useContext from '../useContext';
 import { ContextForLocation } from '../LocationContext';
+import DistanceRangeSlider from './Settings';
 
 import './Home.css';
 
 function Home() {
     const [user, setUser] = useState('');
     const [currentSearchText, setCurrentSearchText] = useState('');
+    const [distance, setDistance] = useState(50);
 
     const { alert } = useContext();
     const navigate = useNavigate();
@@ -69,10 +71,15 @@ function Home() {
                         onSearch={handleSearch}
                         initialSearchText={currentSearchText}
                     />
+                    <DistanceRangeSlider
+                        distance={distance}
+                        setDistance={setDistance}
+                    />
                     {userLocation && (
                         <AdList
                             searchText={currentSearchText}
                             userLocation={userLocation}
+                            distance={distance}
                         />
                     )}
                 </main>

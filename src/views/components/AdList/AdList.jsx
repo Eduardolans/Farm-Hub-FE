@@ -5,7 +5,7 @@ import logic from '../../../logic';
 import useContext from '../../../useContext';
 import './AdList.css';
 
-function AdList({ searchText, userLocation }) {
+function AdList({ searchText, userLocation, distance }) {
     const { alert } = useContext();
     const navigate = useNavigate();
     const [ads, setAds] = useState([]);
@@ -19,21 +19,23 @@ function AdList({ searchText, userLocation }) {
             try {
                 let fetchedAds;
                 if (searchText && userLocation) {
+                    console.log(`Searching with distance: ${distance} km`);
                     fetchedAds = await logic.searchAds(
                         searchText,
-                        userLocation
+                        userLocation,
+                        distance
                     );
                 } else {
                     fetchedAds = await logic.getAllAds();
                 }
                 if (isMounted) {
+                    console.log(`Fetched ads: ${fetchedAds.length}`);
                     setAds(fetchedAds);
                     setIsLoading(false);
                 }
             } catch (error) {
                 if (isMounted) {
-                    console.error('Error loading ads:', error);
-                    alert(error.message);
+                    alert('Error loading ads:', error.message);
                     setAds([]);
                     setIsLoading(false);
                 }
@@ -45,7 +47,7 @@ function AdList({ searchText, userLocation }) {
         return () => {
             isMounted = false;
         };
-    }, [searchText, userLocation, alert]);
+    }, [searchText, userLocation, distance, alert]);
 
     if (isLoading) {
         return (
