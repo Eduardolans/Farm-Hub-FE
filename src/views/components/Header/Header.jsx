@@ -10,10 +10,12 @@ import InfoIcon from '../../../icons/info.png';
 import LogoutIcon from '../../../icons/logout.png';
 
 import UserInfoMenu from '../UserInfoMenu/UserInfoMenu';
+import { ContextForUser } from '../../../UserContext';
 
-function Header({ user }) {
+function Header() {
     const [isMenuOpened, setIsMenuOpened] = useState(false);
     const navigate = useNavigate();
+    const { currentUser } = ContextForUser();
 
     const handleUserInfoMenu = () => {
         setIsMenuOpened(!isMenuOpened);
@@ -29,8 +31,7 @@ function Header({ user }) {
             <header>
                 <div className="Header">
                     <h1 className="UsernameTitle">
-                        {user?.username && user.username}
-                        {/* {user.username ? user.username : ''} */}
+                        {currentUser?.username && currentUser.username}
                     </h1>
                     <Title>Farm-Hub</Title>
                     <div className="ButtonsContainer">

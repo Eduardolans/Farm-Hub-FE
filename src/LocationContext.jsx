@@ -32,6 +32,7 @@ export const LocationProvider = ({ children }) => {
     };
 
     const currentRoute = useLocation();
+
     useEffect(() => {
         if (currentRoute.pathname === '/') {
             fetchUserLocation();
