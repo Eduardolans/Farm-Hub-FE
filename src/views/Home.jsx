@@ -10,7 +10,7 @@ import Header from './components/Header/Header';
 import useContext from '../useContext';
 import { ContextForLocation } from '../LocationContext';
 import { ContextForUser } from '../UserContext';
-import DistanceRangeSlider from './Settings';
+import DistanceRangeSlider from './components/DistanceSlider/DistanceRangeSlider';
 
 import './Home.css';
 
@@ -42,6 +42,7 @@ function Home() {
 
     const handleSearch = (text) => {
         setCurrentSearchText(text);
+        distance(setDistance);
         fetchUserLocation();
         if (text) {
             navigate(`/?q=${text}`);

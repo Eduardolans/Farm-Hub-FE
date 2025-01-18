@@ -19,7 +19,6 @@ function AdList({ searchText, userLocation, distance }) {
             try {
                 let fetchedAds;
                 if (searchText && userLocation) {
-                    console.log(`Searching with distance: ${distance} km`);
                     fetchedAds = await logic.searchAds(
                         searchText,
                         userLocation,
@@ -29,7 +28,6 @@ function AdList({ searchText, userLocation, distance }) {
                     fetchedAds = await logic.getAllAds();
                 }
                 if (isMounted) {
-                    console.log(`Fetched ads: ${fetchedAds.length}`);
                     setAds(fetchedAds);
                     setIsLoading(false);
                 }
