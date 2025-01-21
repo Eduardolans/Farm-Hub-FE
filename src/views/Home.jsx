@@ -1,8 +1,5 @@
-import { useEffect, useState } from 'react';
-import {
-    useLocation as useRouterLocation,
-    useNavigate,
-} from 'react-router-dom';
+import { useEffect, useState, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import AdList from './components/AdList/AdList';
 import SearchBox from './components/SearchBox/SearchBox';
 import { CreateAdButton } from './components/CreateAdButton/CreateAdButton';
@@ -15,22 +12,52 @@ import DistanceRangeSlider from './components/DistanceSlider/DistanceRangeSlider
 import './Home.css';
 
 function Home() {
-    const [currentSearchText, setCurrentSearchText] = useState('');
-    const [distance, setDistance] = useState(50);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [currentSearchText, setCurrentSearchText] = useState(
+        searchParams.get('q') || ''
+    );
+    const [distance, setDistance] = useState(() => {
+        return parseInt(searchParams.get('distance') || '50', 10);
+    });
 
     const { alert } = useContext();
-    const navigate = useNavigate();
     const { userLocation, fetchUserLocation } = ContextForLocation();
     const { currentUser, fetchCurrentUser, isLoading } = ContextForUser();
 
-    const routerLocation = useRouterLocation();
+    const updateUrlParams = useCallback(
+        (text, dist) => {
+            const params = new URLSearchParams(searchParams);
+            if (text) params.set('q', text);
+            else params.delete('q');
+            params.set('distance', dist.toString());
+            setSearchParams(params);
+        },
+        [searchParams, setSearchParams]
+    );
 
-    const searchParams = new URLSearchParams(routerLocation.search);
-    const q = searchParams.get('q');
+    const handleSearch = useCallback(
+        (text) => {
+            setCurrentSearchText(text);
+            fetchUserLocation();
+            updateUrlParams(text, distance);
+        },
+        [distance, fetchUserLocation, updateUrlParams]
+    );
+
+    const handleDistanceChange = useCallback(
+        (newDistance) => {
+            setDistance(newDistance);
+            updateUrlParams(currentSearchText, newDistance);
+        },
+        [currentSearchText, updateUrlParams]
+    );
 
     useEffect(() => {
-        setCurrentSearchText(q || '');
-    }, [q]);
+        const q = searchParams.get('q');
+        const d = searchParams.get('distance');
+        if (q !== null) setCurrentSearchText(q);
+        if (d !== null) setDistance(parseInt(d, 10));
+    }, [searchParams]);
 
     useEffect(() => {
         if (!currentUser && !isLoading) {
@@ -39,18 +66,6 @@ function Home() {
             });
         }
     }, [currentUser, fetchCurrentUser, isLoading, alert]);
-
-    const handleSearch = (text) => {
-        setCurrentSearchText(text);
-        distance(setDistance);
-        fetchUserLocation();
-        if (text) {
-            navigate(`/?q=${text}`);
-        } else {
-            setCurrentSearchText('');
-            navigate('/');
-        }
-    };
 
     if (isLoading) {
         return <p>Loading...</p>;
@@ -67,7 +82,8 @@ function Home() {
                     />
                     <DistanceRangeSlider
                         distance={distance}
-                        setDistance={setDistance}
+                        setDistance={handleDistanceChange}
+                        updateUrlParams={updateUrlParams}
                     />
                     {userLocation && (
                         <AdList

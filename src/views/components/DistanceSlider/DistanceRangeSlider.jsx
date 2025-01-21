@@ -1,7 +1,10 @@
-const DistanceRangeSlider = ({ distance, setDistance }) => {
+const DistanceRangeSlider = ({ distance, setDistance, updateUrlParams }) => {
     const handleSliderChange = (event) => {
-        const newDistance = parseInt(event.target.value);
-        setDistance(newDistance);
+        if (event && event.target) {
+            const newDistance = parseInt(event.target.value, 10);
+            setDistance(newDistance);
+            updateUrlParams(null, newDistance);
+        }
     };
 
     return (

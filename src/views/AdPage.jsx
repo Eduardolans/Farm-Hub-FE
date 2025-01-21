@@ -35,14 +35,35 @@ function AdPage() {
         }
     };
 
+    // const handleGoBack = () => {
+    //     const { from, prevSearch, prevLocation, prevDistance } =
+    //         location.state || {};
+    //     if (from === 'MyAds') {
+    //         navigate('/myads');
+    //     } else if (from === 'MyComments') {
+    //         navigate('/mycomments');
+    //         // } else if (prevSearch) {
+    //         //     navigate(`/?q=${prevSearch}`, {
+    //         //         state: { userLocation: prevLocation },
+    //         //     });
+    //     } else if (prevSearch) {
+    //         navigate(`/?q=${prevSearch}&distance=${prevDistance || 50}`, {
+    //             state: { userLocation: prevLocation },
+    //         });
+    //     } else {
+    //         navigate('/');
+    //     }
+    // };
+
     const handleGoBack = () => {
-        const { from, prevSearch, prevLocation } = location.state || {};
+        const { from, prevSearch, prevLocation, prevDistance } =
+            location.state || {};
         if (from === 'MyAds') {
             navigate('/myads');
         } else if (from === 'MyComments') {
             navigate('/mycomments');
         } else if (prevSearch) {
-            navigate(`/?q=${prevSearch}`, {
+            navigate(`/?q=${prevSearch}&distance=${prevDistance || 50}`, {
                 state: { userLocation: prevLocation },
             });
         } else {

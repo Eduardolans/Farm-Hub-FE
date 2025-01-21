@@ -18,7 +18,7 @@ function AdList({ searchText, userLocation, distance }) {
         const fetchAds = async () => {
             try {
                 let fetchedAds;
-                if (searchText && userLocation) {
+                if ((searchText && userLocation) || distance) {
                     fetchedAds = await logic.searchAds(
                         searchText,
                         userLocation,
@@ -75,6 +75,7 @@ function AdList({ searchText, userLocation, distance }) {
                                 state: {
                                     prevSearch: searchText,
                                     prevLocation: userLocation,
+                                    prevDistance: distance,
                                 },
                             })
                         }
