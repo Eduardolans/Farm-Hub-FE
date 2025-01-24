@@ -1,9 +1,13 @@
 import errors, { SystemError } from './../../com/errors';
 
-const searchAds = (searchText, userLocation, distance) => {
+const searchAds = (searchText = null, userLocation, distance) => {
     let url = `${
         import.meta.env.VITE_API_URL
-    }/searchads/${searchText}?maxDistance=${distance}`;
+    }/searchads?maxDistance=${distance}`;
+
+    if (searchText) {
+        url += `&searchText=${encodeURIComponent(searchText)}`;
+    }
 
     if (userLocation && userLocation.latitude && userLocation.longitude) {
         url += `&lat=${userLocation.latitude}&lng=${userLocation.longitude}`;

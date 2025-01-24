@@ -35,26 +35,6 @@ function AdPage() {
         }
     };
 
-    // const handleGoBack = () => {
-    //     const { from, prevSearch, prevLocation, prevDistance } =
-    //         location.state || {};
-    //     if (from === 'MyAds') {
-    //         navigate('/myads');
-    //     } else if (from === 'MyComments') {
-    //         navigate('/mycomments');
-    //         // } else if (prevSearch) {
-    //         //     navigate(`/?q=${prevSearch}`, {
-    //         //         state: { userLocation: prevLocation },
-    //         //     });
-    //     } else if (prevSearch) {
-    //         navigate(`/?q=${prevSearch}&distance=${prevDistance || 50}`, {
-    //             state: { userLocation: prevLocation },
-    //         });
-    //     } else {
-    //         navigate('/');
-    //     }
-    // };
-
     const handleGoBack = () => {
         const { from, prevSearch, prevLocation, prevDistance } =
             location.state || {};
@@ -62,8 +42,8 @@ function AdPage() {
             navigate('/myads');
         } else if (from === 'MyComments') {
             navigate('/mycomments');
-        } else if (prevSearch) {
-            navigate(`/?q=${prevSearch}&distance=${prevDistance || 50}`, {
+        } else if (prevSearch || prevDistance != 50) {
+            navigate(`/?q=${prevSearch}&distance=${prevDistance}`, {
                 state: { userLocation: prevLocation },
             });
         } else {
