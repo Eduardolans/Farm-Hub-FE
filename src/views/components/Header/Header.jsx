@@ -24,34 +24,33 @@ function Header() {
     const handleLogout = () => {
         logic.logoutUser();
         navigate('/login');
+        window.location.reload();
     };
 
     return (
-        <>
-            <header>
-                <div className="Header">
-                    <h1 className="UsernameTitle">
-                        {currentUser?.username && currentUser.username}
-                    </h1>
-                    <Title>Farm-Hub</Title>
-                    <div className="ButtonsContainer">
-                        <img
-                            src={InfoIcon}
-                            width={24}
-                            alt="User Information"
-                            onClick={handleUserInfoMenu}
-                        />
-                        <img
-                            src={LogoutIcon}
-                            width={24}
-                            alt="Logout Button"
-                            onClick={handleLogout}
-                        />
-                    </div>
-                    {isMenuOpened && <UserInfoMenu />}
+        <header>
+            <div className="Header">
+                <h1 className="UsernameTitle">
+                    {currentUser?.username && currentUser.username}
+                </h1>
+                <Title>Farm-Hub</Title>
+                <div className="ButtonsContainer">
+                    <img
+                        src={InfoIcon}
+                        width={24}
+                        alt="User Information"
+                        onClick={handleUserInfoMenu}
+                    />
+                    <img
+                        src={LogoutIcon}
+                        width={24}
+                        alt="Logout Button"
+                        onClick={handleLogout}
+                    />
                 </div>
-            </header>
-        </>
+                {isMenuOpened && <UserInfoMenu />}
+            </div>
+        </header>
     );
 }
 

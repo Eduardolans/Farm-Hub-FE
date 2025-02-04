@@ -27,7 +27,7 @@ export const UserProvider = ({ children }) => {
     }, []);
 
     const logout = () => {
-        logic.logout();
+        logic.logoutUser();
         setCurrentUser(null);
     };
 

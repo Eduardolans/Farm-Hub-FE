@@ -1,3 +1,3 @@
-const logoutUser = () => delete sessionStorage.token
+const logoutUser = () => delete sessionStorage.token;
 
-export default logoutUser
+export default logoutUser;
