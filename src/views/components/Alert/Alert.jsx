@@ -1,14 +1,16 @@
 import './Alert.css';
 
 const Alert = ({ message, onAccept, level = 'warn' }) => {
-    <div className="Alert">
-        <div className={`AlertBox AlertBox-${level}`}>
-            <p>{message}</p>
-            <button className="Button" onClick={onAccept}>
-                Accept
-            </button>
+    return (
+        <div className="Alert">
+            <div className={`AlertBox AlertBox-${level}`}>
+                <p>{message}</p>
+                <button className="Button" onClick={onAccept}>
+                    Accept
+                </button>
+            </div>
         </div>
-    </div>;
+    );
 };
 
 export default Alert;
