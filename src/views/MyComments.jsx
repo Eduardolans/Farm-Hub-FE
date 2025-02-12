@@ -45,7 +45,7 @@ export const MyComments = () => {
     };
 
     const handleGoToAd = (adId) => {
-        navigate(`/adpage/${adId}`);
+        navigate(`/adpage/${adId}`, { state: { from: 'MyComments' } });
     };
 
     return (
@@ -58,7 +58,7 @@ export const MyComments = () => {
                 className="absolute left-3 top-3 w-11 bg-transparent cursor-pointer text-black font-bold"
                 src={backArrow}
                 alt="Go back"
-                onClick={() => navigate(-1)}
+                onClick={() => navigate('/')}
             />
 
             {!userComments ||

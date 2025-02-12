@@ -1,78 +1,95 @@
-import { useEffect, useState } from 'react';
-import {
-    useLocation as useRouterLocation,
-    useNavigate,
-} from 'react-router-dom';
-import logic from '../logic';
+import { useEffect, useState, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import AdList from './components/AdList/AdList';
 import SearchBox from './components/SearchBox/SearchBox';
 import { CreateAdButton } from './components/CreateAdButton/CreateAdButton';
 import Header from './components/Header/Header';
 import useContext from '../useContext';
 import { ContextForLocation } from '../LocationContext';
+import { ContextForUser } from '../UserContext';
+import DistanceRangeSlider from './components/DistanceSlider/DistanceRangeSlider';
 
 import './Home.css';
 
 function Home() {
-    const [user, setUser] = useState('');
-    const [currentSearchText, setCurrentSearchText] = useState('');
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [currentSearchText, setCurrentSearchText] = useState(
+        searchParams.get('q') || ''
+    );
+    const [distance, setDistance] = useState(() => {
+        return parseInt(searchParams.get('distance') || '50', 10);
+    });
 
     const { alert } = useContext();
-    const navigate = useNavigate();
     const { userLocation, fetchUserLocation } = ContextForLocation();
+    const { currentUser, fetchCurrentUser, isLoading } = ContextForUser();
 
-    const routerLocation = useRouterLocation();
+    const updateUrlParams = useCallback(
+        (text, dist) => {
+            const params = new URLSearchParams(searchParams);
+            if (text) params.set('q', text);
+            else params.delete('q');
+            params.set('distance', dist.toString());
+            setSearchParams(params);
+        },
+        [searchParams, setSearchParams]
+    );
 
-    const searchParams = new URLSearchParams(routerLocation.search);
-    const q = searchParams.get('q');
+    const handleSearch = useCallback(
+        (text) => {
+            setCurrentSearchText(text);
+            fetchUserLocation();
+            updateUrlParams(text, distance);
+        },
+        [distance, fetchUserLocation, updateUrlParams]
+    );
+
+    const handleDistanceChange = useCallback(
+        (newDistance) => {
+            setDistance(newDistance);
+            updateUrlParams(currentSearchText, newDistance);
+        },
+        [currentSearchText, updateUrlParams]
+    );
 
     useEffect(() => {
-        setCurrentSearchText(q || '');
-    }, [q]);
+        const q = searchParams.get('q');
+        const d = searchParams.get('distance');
+        if (q !== null) setCurrentSearchText(q);
+        if (d !== null) setDistance(parseInt(d, 10));
+    }, [searchParams]);
 
     useEffect(() => {
-        fetchUsername();
-    }, []);
-
-    const fetchUsername = () => {
-        try {
-            logic
-                .getUsername()
-                .then((user) => {
-                    setUser(user);
-                })
-                .catch((error) => {
-                    alert(error.message);
-                });
-        } catch (error) {
-            alert(error.message);
+        if (!currentUser && !isLoading) {
+            fetchCurrentUser().catch((error) => {
+                alert('Failed to fetch user information: ' + error.message);
+            });
         }
-    };
+    }, [currentUser, fetchCurrentUser, isLoading, alert]);
 
-    const handleSearch = (text) => {
-        setCurrentSearchText(text);
-        fetchUserLocation();
-        if (text) {
-            navigate(`/?q=${text}`);
-        } else {
-            setCurrentSearchText('');
-            navigate('/');
-        }
-    };
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <>
-            <Header user={user} />
+            <Header user={currentUser} />
             <div className="HomeContainer">
                 <main className="Home">
                     <SearchBox
                         onSearch={handleSearch}
                         initialSearchText={currentSearchText}
                     />
+                    <DistanceRangeSlider
+                        distance={distance}
+                        setDistance={handleDistanceChange}
+                        updateUrlParams={updateUrlParams}
+                    />
                     {userLocation && (
                         <AdList
                             searchText={currentSearchText}
                             userLocation={userLocation}
+                            distance={distance}
                         />
                     )}
                 </main>

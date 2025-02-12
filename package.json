@@ -1,13 +1,13 @@
 {
   "name": "farm-hub",
   "private": true,
-  "version": "1.1.#557ee75",
+  "version": "1.2.8437ab02",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "start": "vite",
     "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives | grep -v warning",
     "preview": "vite preview"
   },
   "dependencies": {

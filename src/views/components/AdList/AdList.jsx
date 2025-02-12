@@ -4,8 +4,9 @@ import { Time } from '../../../components/core/Time/Time';
 import logic from '../../../logic';
 import useContext from '../../../useContext';
 import './AdList.css';
+import { SystemError } from '../../../../com/errors';
 
-function AdList({ searchText, userLocation }) {
+function AdList({ searchText, userLocation, distance }) {
     const { alert } = useContext();
     const navigate = useNavigate();
     const [ads, setAds] = useState([]);
@@ -18,10 +19,11 @@ function AdList({ searchText, userLocation }) {
         const fetchAds = async () => {
             try {
                 let fetchedAds;
-                if (searchText && userLocation) {
+                if ((searchText && userLocation) || distance) {
                     fetchedAds = await logic.searchAds(
                         searchText,
-                        userLocation
+                        userLocation,
+                        distance
                     );
                 } else {
                     fetchedAds = await logic.getAllAds();
@@ -32,8 +34,9 @@ function AdList({ searchText, userLocation }) {
                 }
             } catch (error) {
                 if (isMounted) {
-                    console.error('Error loading ads:', error);
-                    alert(error.message);
+                    if (error instanceof SystemError) {
+                        alert('Error loading ads:', error);
+                    }
                     setAds([]);
                     setIsLoading(false);
                 }
@@ -45,7 +48,7 @@ function AdList({ searchText, userLocation }) {
         return () => {
             isMounted = false;
         };
-    }, [searchText, userLocation, alert]);
+    }, [searchText, userLocation, distance, alert]);
 
     if (isLoading) {
         return (
@@ -75,6 +78,7 @@ function AdList({ searchText, userLocation }) {
                                 state: {
                                     prevSearch: searchText,
                                     prevLocation: userLocation,
+                                    prevDistance: distance,
                                 },
                             })
                         }
