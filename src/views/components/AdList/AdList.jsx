@@ -4,6 +4,7 @@ import { Time } from '../../../components/core/Time/Time';
 import logic from '../../../logic';
 import useContext from '../../../useContext';
 import './AdList.css';
+import { SystemError } from '../../../../com/errors';
 
 function AdList({ searchText, userLocation, distance }) {
     const { alert } = useContext();
@@ -33,7 +34,9 @@ function AdList({ searchText, userLocation, distance }) {
                 }
             } catch (error) {
                 if (isMounted) {
-                    alert('Error loading ads:', error.message);
+                    if (error instanceof SystemError) {
+                        alert('Error loading ads:', error);
+                    }
                     setAds([]);
                     setIsLoading(false);
                 }
