@@ -2,11 +2,11 @@
 
 @layer components {
     .Header {
-        @apply flex w-full fixed justify-between items-center p-3 box-border z-50;
+        @apply flex w-full fixed justify-between items-center p-1 box-border z-50;
         background: var(--white);
         border-bottom: 2px solid var(--border-color);
         box-shadow: 0 4px 12px var(--shadow);
-        min-height: 80px;
+        min-height: 60px;
     }
 
     .UsernameTitle {
