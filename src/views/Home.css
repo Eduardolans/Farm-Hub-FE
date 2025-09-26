@@ -2,13 +2,12 @@
 
 @layer components {
     .HomeContainer {
-        @apply flex flex-col mt-20 min-h-screen;
+        @apply flex flex-col mt-20 min-h-screen px-4;
         background: var(--light-gray);
-        padding: 0 16px;
     }
 
     .Home {
-        @apply flex-grow overflow-y-auto pb-24;
+        @apply flex-grow overflow-y-auto pb-24 space-y-4;
         background: var(--light-gray);
         max-width: 1200px;
         margin: 0 auto;

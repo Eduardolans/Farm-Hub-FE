@@ -8,7 +8,7 @@ const DistanceRangeSlider = ({ distance, setDistance, updateUrlParams }) => {
     };
 
     return (
-        <div className="distance-slider w-full p-1 bg-green-200 fixed flex-col  left-0 mt-[60px] z-20">
+        <div className="distance-slider">
             <input
                 type="range"
                 min="1"
@@ -18,7 +18,7 @@ const DistanceRangeSlider = ({ distance, setDistance, updateUrlParams }) => {
                 className="slider"
             />
             <div className="slider-value">
-                Distancia de busqueda: {distance} km
+                Distancia de búsqueda: {distance} km
             </div>
         </div>
     );
