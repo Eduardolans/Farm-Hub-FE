@@ -2,6 +2,17 @@
 
 @layer components {
     .LoginForm {
-        @apply flex flex-col justify-center items-center gap-1 p-1;
+        @apply flex flex-col justify-center items-center gap-6 p-8;
+        background: var(--brutalist-surface);
+        border: 4px solid var(--brutalist-primary);
+        box-shadow: 12px 12px 0px var(--brutalist-secondary);
+        transform: rotate(-1deg);
+        margin: 20px;
+    }
+
+    .LoginForm:hover {
+        transform: rotate(0deg);
+        box-shadow: 16px 16px 0px var(--brutalist-accent);
+        transition: all 0.3s ease;
     }
 }

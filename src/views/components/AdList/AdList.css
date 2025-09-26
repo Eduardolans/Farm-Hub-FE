@@ -2,46 +2,93 @@
 
 @layer components {
     .AdListContainer {
-        @apply max-w-4xl mx-auto p-4 mt-[110px];
+        @apply max-w-4xl mx-auto p-4 mt-[140px];
     }
 
     .AdList {
-        @apply space-y-4;
+        @apply space-y-6;
     }
 
     .AdListItem {
-        @apply bg-white rounded-lg shadow-md p-4 cursor-pointer transition-all hover:shadow-lg;
+        @apply cursor-pointer transition-all duration-300;
+        background: var(--brutalist-surface);
+        border: 3px solid var(--brutalist-border);
+        box-shadow: 6px 6px 0px var(--brutalist-primary);
+        padding: 20px;
+        transform: rotate(0.5deg);
+    }
+
+    .AdListItem:hover {
+        transform: rotate(0deg) scale(1.02);
+        box-shadow: 10px 10px 0px var(--brutalist-secondary);
+        border-color: var(--brutalist-primary);
+    }
+
+    .AdListItem:nth-child(even) {
+        transform: rotate(-0.5deg);
+        box-shadow: 6px 6px 0px var(--brutalist-secondary);
+    }
+
+    .AdListItem:nth-child(even):hover {
+        transform: rotate(0deg) scale(1.02);
+        box-shadow: 10px 10px 0px var(--brutalist-accent);
     }
 
     .AdListItemContent {
-        @apply space-y-2;
+        @apply space-y-3;
     }
 
     .AdListItemTitle {
-        @apply text-xl font-semibold text-green-700;
+        @apply text-xl font-bold uppercase tracking-wide;
+        color: var(--brutalist-primary);
+        font-family: 'JetBrains Mono', monospace;
+        text-decoration: underline;
+        text-decoration-color: var(--brutalist-secondary);
+        text-decoration-thickness: 2px;
     }
 
     .AdListItemHeader {
-        @apply flex justify-between items-center mb-2;
+        @apply flex justify-between items-center mb-3;
     }
 
     .AdListItemAuthor {
-        @apply text-sm text-gray-700 underline font-bold;
+        @apply text-sm font-bold uppercase tracking-wider;
+        color: var(--brutalist-accent);
+        font-family: 'JetBrains Mono', monospace;
+        transform: skew(-3deg);
     }
 
     .AdListItemDate {
-        @apply text-sm text-gray-500;
+        @apply text-sm font-medium;
+        color: var(--brutalist-text);
+        font-family: 'JetBrains Mono', monospace;
+        opacity: 0.8;
     }
 
     .AdListItemDescription {
-        @apply text-gray-700;
+        @apply font-medium leading-relaxed;
+        color: var(--brutalist-text);
+        font-family: 'Space Grotesk', sans-serif;
     }
 
     .AdListItemPrice {
-        @apply text-lg font-bold text-green-600;
+        @apply text-lg font-bold uppercase tracking-wide;
+        color: var(--brutalist-secondary);
+        font-family: 'JetBrains Mono', monospace;
+        background: rgba(255, 0, 128, 0.1);
+        padding: 4px 8px;
+        border: 2px solid var(--brutalist-secondary);
+        display: inline-block;
+        transform: skew(-2deg);
     }
 
     .AdListEmpty {
-        @apply mt-60 text-center text-lg text-black font-bold;
+        @apply mt-60 text-center text-lg font-bold uppercase tracking-wider;
+        color: var(--brutalist-warning);
+        font-family: 'JetBrains Mono', monospace;
+        background: rgba(255, 69, 0, 0.1);
+        border: 3px solid var(--brutalist-warning);
+        padding: 20px;
+        transform: rotate(-1deg);
     }
 }

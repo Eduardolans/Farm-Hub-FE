@@ -2,10 +2,33 @@
 
 @layer components {
     .CreateAdButtonFooter {
-        @apply fixed bottom-0 left-0 right-0 bg-white border-t border-b-orange-700 p-1 flex justify-center;
+        @apply fixed bottom-0 left-0 right-0 p-4 flex justify-center z-40;
+        background: linear-gradient(to top, var(--brutalist-bg) 0%, transparent 100%);
+        border-top: 3px solid var(--brutalist-primary);
     }
 
     .CreateAdButton {
-        @apply flex items-center justify-center bg-white text-black font-extrabold rounded-full px-6 py-3 border border-blue-500 hover:bg-blue-600 transition-colors;
+        @apply flex items-center justify-center font-extrabold text-2xl cursor-pointer transition-all duration-300;
+        background: var(--brutalist-accent);
+        color: var(--brutalist-bg);
+        border: 4px solid var(--brutalist-accent);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        box-shadow: 6px 6px 0px var(--brutalist-primary);
+        transform: rotate(-5deg);
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .CreateAdButton:hover {
+        background: var(--brutalist-secondary);
+        border-color: var(--brutalist-secondary);
+        box-shadow: 8px 8px 0px var(--brutalist-accent);
+        transform: rotate(0deg) scale(1.1);
+    }
+
+    .CreateAdButton:active {
+        transform: rotate(-5deg) scale(0.95);
+        box-shadow: 3px 3px 0px var(--brutalist-primary);
     }
 }

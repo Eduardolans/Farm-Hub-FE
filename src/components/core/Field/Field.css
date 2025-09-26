@@ -1,17 +1,41 @@
- @tailwind components;
+@tailwind components;
 
- @layer components {
+@layer components {
+    .Field {
+        @apply flex flex-col gap-2 my-4;
+    }
 
-     .Field {
-         @apply flex flex-col m-[.25rem_0] gap-[.25rem];
-     }
+    .Field > label {
+        @apply font-bold uppercase tracking-wider;
+        color: var(--brutalist-primary);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        letter-spacing: 2px;
+        margin-bottom: 4px;
+    }
 
-     .Field>label {
-         @apply text-[1rem] mb-[.25rem];
-     }
+    .Field > input {
+        @apply font-medium transition-all duration-200;
+        background: var(--brutalist-surface);
+        color: var(--brutalist-text);
+        border: 2px solid var(--brutalist-border);
+        padding: 14px 16px;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 16px;
+        transform: skew(-1deg);
+        box-shadow: 2px 2px 0px var(--brutalist-primary);
+    }
 
-     .Field>input {
-         @apply text-[black] p-[.5rem] border-[1px] border-blue-500 rounded-[.25rem];
-     }
+    .Field > input:focus {
+        outline: none;
+        border-color: var(--brutalist-primary);
+        box-shadow: 4px 4px 0px var(--brutalist-secondary);
+        transform: skew(-1deg) scale(1.02);
+        background: rgba(0, 255, 65, 0.05);
+    }
 
- }
+    .Field > input::placeholder {
+        color: #666;
+        font-style: italic;
+    }
+}

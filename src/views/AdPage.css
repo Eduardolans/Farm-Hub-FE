@@ -2,39 +2,76 @@
 
 @layer components {
     .AdPageLoading {
-        @apply text-2xl font-bold text-green-600;
+        @apply text-2xl font-bold uppercase tracking-wider;
+        color: var(--brutalist-primary);
+        font-family: 'JetBrains Mono', monospace;
     }
 
     .AdPageContainer {
-        @apply max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md relative z-0;
+        @apply max-w-2xl mx-auto p-6 relative z-0;
+        background: var(--brutalist-surface);
+        border: 4px solid var(--brutalist-primary);
+        box-shadow: 12px 12px 0px var(--brutalist-secondary);
+        transform: rotate(0.5deg);
+        margin: 20px;
     }
 
     .AdPageTitle {
-        @apply text-3xl font-bold text-green-700 mb-4;
+        @apply text-3xl font-bold uppercase tracking-wide mb-6;
+        color: var(--brutalist-primary);
+        font-family: 'JetBrains Mono', monospace;
+        text-decoration: underline;
+        text-decoration-color: var(--brutalist-accent);
+        text-decoration-thickness: 3px;
+        text-underline-offset: 8px;
     }
 
     .AdPageDetails {
-        @apply mb-6;
+        @apply mb-8 space-y-4;
     }
 
     .AdPageAuthor {
-        @apply text-lg font-semibold text-gray-700;
+        @apply text-lg font-bold uppercase tracking-wider;
+        color: var(--brutalist-accent);
+        font-family: 'JetBrains Mono', monospace;
+        transform: skew(-2deg);
     }
 
     .AdPageDescription {
-        @apply text-gray-500 font-semibold mt-2 mb-2;
+        @apply font-medium mt-4 mb-4 leading-relaxed;
+        color: var(--brutalist-text);
+        font-family: 'Space Grotesk', sans-serif;
+        background: rgba(0, 255, 65, 0.05);
+        padding: 16px;
+        border-left: 4px solid var(--brutalist-primary);
     }
 
     .AdPagePrice {
-        @apply text-xl font-bold text-green-600 mt-2;
+        @apply text-xl font-bold uppercase tracking-wide mt-4;
+        color: var(--brutalist-secondary);
+        font-family: 'JetBrains Mono', monospace;
+        background: rgba(255, 0, 128, 0.1);
+        padding: 8px 16px;
+        border: 3px solid var(--brutalist-secondary);
+        display: inline-block;
+        transform: skew(-3deg);
     }
 
     .AdPageDate {
-        @apply text-sm text-gray-500 mt-1;
+        @apply text-sm mt-2 font-medium;
+        color: var(--brutalist-text);
+        font-family: 'JetBrains Mono', monospace;
+        opacity: 0.8;
     }
 
     .AdPageContactInfo {
-        @apply text-sm text-orange-700 mt-2;
+        @apply text-sm mt-4 font-bold uppercase tracking-wide;
+        color: var(--brutalist-warning);
+        font-family: 'JetBrains Mono', monospace;
+        background: rgba(255, 69, 0, 0.1);
+        padding: 8px 12px;
+        border: 2px solid var(--brutalist-warning);
+        display: inline-block;
     }
 
     .AdPageCommentsSection {
@@ -42,30 +79,55 @@
     }
 
     .AdPageCommentsTitle {
-        @apply text-2xl font-semibold text-green-700 mb-4;
+        @apply text-2xl font-bold uppercase tracking-wide mb-6;
+        color: var(--brutalist-secondary);
+        font-family: 'JetBrains Mono', monospace;
+        text-decoration: underline;
+        text-decoration-color: var(--brutalist-primary);
+        text-decoration-thickness: 2px;
     }
 
     .AdPageCommentsList {
-        @apply space-y-4 mt-4;
+        @apply space-y-4 mt-6;
     }
 
     .AdPageComment {
-        @apply bg-gray-100 p-4 rounded-lg;
+        @apply p-4;
+        background: var(--brutalist-bg);
+        border: 2px solid var(--brutalist-border);
+        box-shadow: 4px 4px 0px var(--brutalist-primary);
+        transform: rotate(0.5deg);
+    }
+
+    .AdPageComment:nth-child(even) {
+        transform: rotate(-0.5deg);
+        box-shadow: 4px 4px 0px var(--brutalist-secondary);
     }
 
     .AdPageCommentText {
-        @apply text-gray-800 break-words;
+        @apply break-words font-medium;
+        color: var(--brutalist-text);
+        font-family: 'Space Grotesk', sans-serif;
     }
 
     .AdPageCommentFooter {
-        @apply flex justify-between items-center mt-2;
+        @apply flex justify-between items-center mt-3;
     }
 
     .AdPageCommentAuthor {
-        @apply text-sm font-bold text-green-600;
+        @apply text-sm font-bold uppercase tracking-wider;
+        color: var(--brutalist-accent);
+        font-family: 'JetBrains Mono', monospace;
     }
 
     .AdPageBackButton {
-        @apply absolute left-3 top-2.5 w-12 bg-transparent border-none cursor-pointer text-black font-bold;
+        @apply absolute left-3 top-3 w-12 bg-transparent border-none cursor-pointer font-bold transition-all duration-200;
+        filter: invert(1) sepia(1) saturate(5) hue-rotate(90deg);
+        transform: skew(5deg);
+    }
+
+    .AdPageBackButton:hover {
+        filter: invert(1) sepia(1) saturate(5) hue-rotate(270deg);
+        transform: skew(5deg) scale(1.2);
     }
 }

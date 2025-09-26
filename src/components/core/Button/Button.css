@@ -2,6 +2,37 @@
 
 @layer components {
     .Button {
-        @apply p-[0.4rem] bg-white font-[1rem] border-[1px] border-blue-500 rounded-md mt-3;
+        @apply font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer;
+        background: var(--brutalist-primary);
+        color: var(--brutalist-bg);
+        border: 3px solid var(--brutalist-primary);
+        padding: 12px 24px;
+        transform: skew(-3deg);
+        box-shadow: 4px 4px 0px var(--brutalist-secondary);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        letter-spacing: 1px;
+        margin: 8px 4px;
+    }
+
+    .Button:hover {
+        background: var(--brutalist-secondary);
+        border-color: var(--brutalist-secondary);
+        box-shadow: 6px 6px 0px var(--brutalist-accent);
+        transform: skew(-3deg) translate(-2px, -2px);
+    }
+
+    .Button:active {
+        transform: skew(-3deg) translate(2px, 2px);
+        box-shadow: 2px 2px 0px var(--brutalist-secondary);
+    }
+
+    .Button:disabled {
+        background: var(--brutalist-border);
+        border-color: var(--brutalist-border);
+        color: #666;
+        cursor: not-allowed;
+        transform: skew(-3deg);
+        box-shadow: 2px 2px 0px #333;
     }
 }

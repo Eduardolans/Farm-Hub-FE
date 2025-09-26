@@ -2,14 +2,32 @@
 
 @layer components {
     .Header {
-        @apply flex w-full fixed justify-between items-center p-3 box-border border-b-[1px] border-b-green-700 bg-white z-50;
+        @apply flex w-full fixed justify-between items-center p-4 box-border z-50;
+        background: var(--brutalist-bg);
+        border-bottom: 4px solid var(--brutalist-primary);
+        box-shadow: 0 4px 0px var(--brutalist-secondary);
     }
 
     .UsernameTitle {
-        @apply flex w-1/3 items-start justify-start gap-[0rem] font-bold;
+        @apply flex w-1/3 items-start justify-start gap-0 font-bold uppercase tracking-wider;
+        color: var(--brutalist-accent);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        transform: skew(-5deg);
     }
 
     .ButtonsContainer {
-        @apply flex w-1/3 items-end justify-end gap-2;
+        @apply flex w-1/3 items-end justify-end gap-4;
+    }
+
+    .ButtonsContainer img {
+        @apply cursor-pointer transition-all duration-200;
+        filter: invert(1) sepia(1) saturate(5) hue-rotate(90deg);
+        transform: skew(-3deg);
+    }
+
+    .ButtonsContainer img:hover {
+        filter: invert(1) sepia(1) saturate(5) hue-rotate(270deg);
+        transform: skew(-3deg) scale(1.2);
     }
 }

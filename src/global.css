@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Workbench&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,27 +10,125 @@
     }
 
     :root {
-        @apply max-w-screen-xl mx-auto text-center flex justify-center items-center text-green-600 bg-white;
+        @apply max-w-screen-xl mx-auto text-center flex justify-center items-center bg-black;
+        --brutalist-primary: #00ff41;
+        --brutalist-secondary: #ff0080;
+        --brutalist-accent: #ffff00;
+        --brutalist-warning: #ff4500;
+        --brutalist-bg: #000000;
+        --brutalist-surface: #1a1a1a;
+        --brutalist-text: #ffffff;
+        --brutalist-border: #333333;
     }
 
     * {
-        font-family: Workbench;
-        color: var(--first-color);
+        font-family: 'Space Grotesk', sans-serif;
+        color: var(--brutalist-text);
     }
 
     body {
-        @apply flex h-screen w-full items-center justify-center align-middle;
+        @apply flex h-screen w-full items-center justify-center align-middle bg-black;
+        background: linear-gradient(45deg, #000000 0%, #1a1a1a 50%, #000000 100%);
     }
 
     h1 {
-        @apply text-xl font-bold text-gray-700;
+        @apply text-2xl font-bold;
+        color: var(--brutalist-primary);
+        font-family: 'JetBrains Mono', monospace;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    h2 {
+        @apply text-xl font-semibold;
+        color: var(--brutalist-secondary);
+        font-family: 'JetBrains Mono', monospace;
+        text-transform: uppercase;
+    }
+
+    h3 {
+        @apply text-lg font-medium;
+        color: var(--brutalist-accent);
+        font-family: 'JetBrains Mono', monospace;
     }
 
     .Link {
-        @apply text-black underline;
+        @apply text-white underline font-bold uppercase tracking-wider;
+        color: var(--brutalist-primary);
+        text-decoration: underline;
+        text-decoration-color: var(--brutalist-secondary);
+        text-decoration-thickness: 3px;
+        transition: all 0.2s ease;
+    }
+
+    .Link:hover {
+        color: var(--brutalist-accent);
+        text-decoration-color: var(--brutalist-primary);
+        transform: skew(-5deg);
     }
 
     .ErrorMessage {
-        @apply flex justify-center text-red-500;
+        @apply flex justify-center font-bold uppercase tracking-wide;
+        color: var(--brutalist-warning);
+        background: rgba(255, 69, 0, 0.1);
+        border: 2px solid var(--brutalist-warning);
+        padding: 8px 16px;
+        transform: rotate(-1deg);
+    }
+
+    /* Brutalist button base styles */
+    button, .Button {
+        @apply font-bold uppercase tracking-wider transition-all duration-200;
+        background: var(--brutalist-primary);
+        color: var(--brutalist-bg);
+        border: 3px solid var(--brutalist-primary);
+        padding: 12px 24px;
+        transform: skew(-5deg);
+        box-shadow: 4px 4px 0px var(--brutalist-secondary);
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    button:hover, .Button:hover {
+        background: var(--brutalist-secondary);
+        border-color: var(--brutalist-secondary);
+        box-shadow: 6px 6px 0px var(--brutalist-accent);
+        transform: skew(-5deg) translate(-2px, -2px);
+    }
+
+    button:active, .Button:active {
+        transform: skew(-5deg) translate(2px, 2px);
+        box-shadow: 2px 2px 0px var(--brutalist-secondary);
+    }
+
+    /* Input styles */
+    input {
+        @apply font-medium;
+        background: var(--brutalist-surface);
+        color: var(--brutalist-text);
+        border: 2px solid var(--brutalist-border);
+        padding: 12px 16px;
+        font-family: 'Space Grotesk', sans-serif;
+        transition: all 0.2s ease;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: var(--brutalist-primary);
+        box-shadow: 0 0 0 3px rgba(0, 255, 65, 0.2);
+        transform: scale(1.02);
+    }
+
+    /* Card/Container styles */
+    .brutalist-card {
+        background: var(--brutalist-surface);
+        border: 3px solid var(--brutalist-border);
+        box-shadow: 8px 8px 0px var(--brutalist-primary);
+        transform: rotate(1deg);
+        transition: all 0.3s ease;
+    }
+
+    .brutalist-card:hover {
+        transform: rotate(0deg) scale(1.02);
+        box-shadow: 12px 12px 0px var(--brutalist-secondary);
     }
 }

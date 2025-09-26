@@ -2,7 +2,11 @@
 
 @layer components {
     .SearchBox {
-        @apply fixed w-full max-w-[400px] mx-auto p-1 bg-white rounded-full mt-[6px] mb-[6px] z-20;
+        @apply fixed w-full max-w-[450px] mx-auto p-2 mt-2 mb-2 z-20;
+        background: var(--brutalist-surface);
+        border: 3px solid var(--brutalist-primary);
+        box-shadow: 6px 6px 0px var(--brutalist-secondary);
+        transform: skew(-2deg);
     }
 
     .SearchBoxContainer {
@@ -10,14 +14,49 @@
     }
 
     .SearchBoxInput {
-        @apply w-full py-2 px-9 pr-20 text-base border border-blue-500 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-300;
+        @apply w-full py-3 px-12 pr-24 text-base font-medium transition-all duration-200;
+        background: var(--brutalist-bg);
+        color: var(--brutalist-text);
+        border: 2px solid var(--brutalist-border);
+        font-family: 'Space Grotesk', sans-serif;
+        transform: skew(2deg);
+    }
+
+    .SearchBoxInput:focus {
+        outline: none;
+        border-color: var(--brutalist-accent);
+        box-shadow: 0 0 0 3px rgba(255, 255, 0, 0.2);
+        transform: skew(2deg) scale(1.02);
+    }
+
+    .SearchBoxInput::placeholder {
+        color: #666;
+        font-style: italic;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 1px;
     }
 
     .SearchBoxButton {
-        @apply absolute right-2 top-1/2 -translate-y-1/2 bg-transparent border-none text-xl cursor-pointer text-green-600 hover:text-green-600;
+        @apply absolute right-2 top-1/2 -translate-y-1/2 bg-transparent border-none text-sm cursor-pointer font-bold uppercase tracking-wider transition-all duration-200;
+        color: var(--brutalist-primary);
+        font-family: 'JetBrains Mono', monospace;
+        transform: skew(-5deg);
+    }
+
+    .SearchBoxButton:hover {
+        color: var(--brutalist-accent);
+        transform: skew(-5deg) scale(1.1);
     }
 
     .ClearButton {
-        @apply absolute left-3 top-1/2 -translate-y-1/2 bg-transparent border-none text-xl cursor-pointer text-black font-bold;
+        @apply absolute left-3 top-1/2 -translate-y-1/2 bg-transparent border-none cursor-pointer transition-all duration-200;
+        filter: invert(1) sepia(1) saturate(5) hue-rotate(90deg);
+        transform: skew(5deg);
+    }
+
+    .ClearButton:hover {
+        filter: invert(1) sepia(1) saturate(5) hue-rotate(270deg);
+        transform: skew(5deg) scale(1.2);
     }
 }

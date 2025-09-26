@@ -2,6 +2,24 @@
 
 @layer components {
     .Title {
-        @apply text-2xl w-1/3 text-center text-green-700;
+        @apply font-bold text-center uppercase tracking-wider;
+        color: var(--brutalist-primary);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 24px;
+        letter-spacing: 3px;
+        text-shadow: 2px 2px 0px var(--brutalist-secondary);
+        transform: skew(-2deg);
+        margin: 16px 0;
+        text-decoration: underline;
+        text-decoration-color: var(--brutalist-accent);
+        text-decoration-thickness: 3px;
+        text-underline-offset: 8px;
+    }
+
+    .Title:hover {
+        color: var(--brutalist-secondary);
+        text-shadow: 3px 3px 0px var(--brutalist-accent);
+        transform: skew(-2deg) scale(1.05);
+        transition: all 0.3s ease;
     }
 }

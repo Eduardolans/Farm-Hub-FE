@@ -2,10 +2,31 @@
 
 @layer components {
     .UserInfoMenuContainer {
-        @apply fixed bg-green-700 right-3 top-16 rounded-xl p-1 text-black shadow-2xl;
+        @apply fixed right-3 top-16 p-2 z-50;
+        background: var(--brutalist-surface);
+        border: 3px solid var(--brutalist-primary);
+        box-shadow: 6px 6px 0px var(--brutalist-secondary);
+        transform: rotate(-2deg);
     }
 
     .UserInfoMenuList {
-        @apply cursor-pointer p-3 hover:bg-gray-700 bg-white;
+        @apply cursor-pointer font-bold uppercase tracking-wider transition-all duration-200;
+        color: var(--brutalist-text);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+    }
+
+    .UserInfoMenuList li {
+        @apply p-3 border-b-2 border-transparent;
+        background: var(--brutalist-bg);
+        margin: 2px 0;
+        transform: skew(-2deg);
+    }
+
+    .UserInfoMenuList li:hover {
+        background: var(--brutalist-primary);
+        color: var(--brutalist-bg);
+        border-color: var(--brutalist-secondary);
+        transform: skew(-2deg) scale(1.05);
     }
 }
