@@ -2,37 +2,68 @@
 
 @layer components {
     .Button {
-        @apply font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer;
-        background: var(--brutalist-primary);
-        color: var(--brutalist-bg);
-        border: 3px solid var(--brutalist-primary);
-        padding: 12px 24px;
-        transform: skew(-3deg);
-        box-shadow: 4px 4px 0px var(--brutalist-secondary);
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 14px;
-        letter-spacing: 1px;
-        margin: 8px 4px;
+        @apply font-semibold text-lg transition-all duration-200 rounded-lg cursor-pointer;
+        background: var(--primary-green);
+        color: var(--white);
+        border: 2px solid var(--primary-green);
+        padding: 18px 36px;
+        box-shadow: 0 4px 8px var(--shadow);
+        font-family: 'Inter', sans-serif;
+        font-size: 18px;
+        min-height: 60px;
+        font-weight: 600;
+        letter-spacing: 0.025em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .Button:hover {
-        background: var(--brutalist-secondary);
-        border-color: var(--brutalist-secondary);
-        box-shadow: 6px 6px 0px var(--brutalist-accent);
-        transform: skew(-3deg) translate(-2px, -2px);
+        background: var(--light-green);
+        border-color: var(--light-green);
+        box-shadow: 0 6px 14px var(--shadow);
+        transform: translateY(-3px);
     }
 
     .Button:active {
-        transform: skew(-3deg) translate(2px, 2px);
-        box-shadow: 2px 2px 0px var(--brutalist-secondary);
+        transform: translateY(-1px);
+        box-shadow: 0 3px 6px var(--shadow);
+    }
+
+    .Button:focus {
+        outline: 3px solid var(--accent-orange);
+        outline-offset: 3px;
     }
 
     .Button:disabled {
-        background: var(--brutalist-border);
-        border-color: var(--brutalist-border);
-        color: #666;
+        background: #d1d5db;
+        border-color: #d1d5db;
+        color: #6b7280;
         cursor: not-allowed;
-        transform: skew(-3deg);
-        box-shadow: 2px 2px 0px #333;
+        transform: none;
+        box-shadow: 0 2px 4px var(--shadow);
+    }
+
+    /* Variantes de botón */
+    .Button.secondary {
+        background: var(--white);
+        color: var(--primary-green);
+        border-color: var(--primary-green);
+    }
+
+    .Button.secondary:hover {
+        background: var(--light-gray);
+        color: var(--light-green);
+        border-color: var(--light-green);
+    }
+
+    .Button.warning {
+        background: var(--warning);
+        border-color: var(--warning);
+    }
+
+    .Button.warning:hover {
+        background: #dc2626;
+        border-color: #dc2626;
     }
 }

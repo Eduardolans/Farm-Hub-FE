@@ -2,40 +2,48 @@
 
 @layer components {
     .Field {
-        @apply flex flex-col gap-2 my-4;
+        @apply flex flex-col gap-3 my-6;
     }
 
     .Field > label {
-        @apply font-bold uppercase tracking-wider;
-        color: var(--brutalist-primary);
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 12px;
-        letter-spacing: 2px;
-        margin-bottom: 4px;
+        @apply font-semibold text-lg;
+        color: var(--primary-green);
+        font-family: 'Inter', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        letter-spacing: 0.025em;
     }
 
     .Field > input {
         @apply font-medium transition-all duration-200;
-        background: var(--brutalist-surface);
-        color: var(--brutalist-text);
-        border: 2px solid var(--brutalist-border);
-        padding: 14px 16px;
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 16px;
-        transform: skew(-1deg);
-        box-shadow: 2px 2px 0px var(--brutalist-primary);
+        background: var(--white);
+        color: var(--text-dark);
+        border: 2px solid var(--border-color);
+        padding: 18px 24px;
+        font-family: 'Inter', sans-serif;
+        font-size: 18px;
+        border-radius: 10px;
+        min-height: 60px;
+        box-shadow: 0 2px 4px var(--shadow);
     }
 
     .Field > input:focus {
         outline: none;
-        border-color: var(--brutalist-primary);
-        box-shadow: 4px 4px 0px var(--brutalist-secondary);
-        transform: skew(-1deg) scale(1.02);
-        background: rgba(0, 255, 65, 0.05);
+        border-color: var(--primary-green);
+        box-shadow: 0 0 0 4px rgba(45, 80, 22, 0.1);
+        background: #f9fafb;
+        transform: scale(1.02);
     }
 
     .Field > input::placeholder {
-        color: #666;
-        font-style: italic;
+        color: #9ca3af;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .Field > input:hover {
+        border-color: var(--light-green);
+        box-shadow: 0 4px 8px var(--shadow);
     }
 }

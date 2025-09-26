@@ -2,31 +2,38 @@
 
 @layer components {
     .UserInfoMenuContainer {
-        @apply fixed right-3 top-16 p-2 z-50;
-        background: var(--brutalist-surface);
-        border: 3px solid var(--brutalist-primary);
-        box-shadow: 6px 6px 0px var(--brutalist-secondary);
-        transform: rotate(-2deg);
+        @apply fixed right-6 top-20 p-2 z-50;
+        background: var(--white);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        box-shadow: 0 8px 24px var(--shadow);
+        min-width: 200px;
     }
 
     .UserInfoMenuList {
-        @apply cursor-pointer font-bold uppercase tracking-wider transition-all duration-200;
-        color: var(--brutalist-text);
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 12px;
+        @apply cursor-pointer font-medium transition-all duration-200;
+        color: var(--text-dark);
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
     }
 
     .UserInfoMenuList li {
-        @apply p-3 border-b-2 border-transparent;
-        background: var(--brutalist-bg);
-        margin: 2px 0;
-        transform: skew(-2deg);
+        @apply p-4 rounded-lg;
+        background: var(--white);
+        margin: 4px 0;
+        border: 1px solid transparent;
+        font-weight: 500;
+        transition: all 0.2s ease;
     }
 
     .UserInfoMenuList li:hover {
-        background: var(--brutalist-primary);
-        color: var(--brutalist-bg);
-        border-color: var(--brutalist-secondary);
-        transform: skew(-2deg) scale(1.05);
+        background: var(--primary-green);
+        color: var(--white);
+        border-color: var(--primary-green);
+        transform: scale(1.02);
+    }
+
+    .UserInfoMenuList li:active {
+        transform: scale(0.98);
     }
 }

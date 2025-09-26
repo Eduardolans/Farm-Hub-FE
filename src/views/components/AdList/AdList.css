@@ -2,93 +2,88 @@
 
 @layer components {
     .AdListContainer {
-        @apply max-w-4xl mx-auto p-4 mt-[140px];
+        @apply max-w-4xl mx-auto p-6 mt-36;
     }
 
     .AdList {
-        @apply space-y-6;
+        @apply space-y-8;
     }
 
     .AdListItem {
         @apply cursor-pointer transition-all duration-300;
-        background: var(--brutalist-surface);
-        border: 3px solid var(--brutalist-border);
-        box-shadow: 6px 6px 0px var(--brutalist-primary);
-        padding: 20px;
-        transform: rotate(0.5deg);
+        background: var(--white);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px var(--shadow);
+        padding: 32px;
     }
 
     .AdListItem:hover {
-        transform: rotate(0deg) scale(1.02);
-        box-shadow: 10px 10px 0px var(--brutalist-secondary);
-        border-color: var(--brutalist-primary);
-    }
-
-    .AdListItem:nth-child(even) {
-        transform: rotate(-0.5deg);
-        box-shadow: 6px 6px 0px var(--brutalist-secondary);
-    }
-
-    .AdListItem:nth-child(even):hover {
-        transform: rotate(0deg) scale(1.02);
-        box-shadow: 10px 10px 0px var(--brutalist-accent);
+        box-shadow: 0 8px 24px var(--shadow);
+        transform: translateY(-4px);
+        border-color: var(--primary-green);
     }
 
     .AdListItemContent {
-        @apply space-y-3;
+        @apply space-y-4;
     }
 
     .AdListItemTitle {
-        @apply text-xl font-bold uppercase tracking-wide;
-        color: var(--brutalist-primary);
-        font-family: 'JetBrains Mono', monospace;
-        text-decoration: underline;
-        text-decoration-color: var(--brutalist-secondary);
-        text-decoration-thickness: 2px;
+        @apply text-2xl font-bold;
+        color: var(--primary-green);
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 12px;
     }
 
     .AdListItemHeader {
-        @apply flex justify-between items-center mb-3;
+        @apply flex justify-between items-center mb-4;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--border-color);
     }
 
     .AdListItemAuthor {
-        @apply text-sm font-bold uppercase tracking-wider;
-        color: var(--brutalist-accent);
-        font-family: 'JetBrains Mono', monospace;
-        transform: skew(-3deg);
+        @apply text-lg font-semibold;
+        color: var(--accent-orange);
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
     }
 
     .AdListItemDate {
-        @apply text-sm font-medium;
-        color: var(--brutalist-text);
-        font-family: 'JetBrains Mono', monospace;
-        opacity: 0.8;
+        @apply text-base font-medium;
+        color: var(--neutral-gray);
+        font-family: 'Inter', sans-serif;
     }
 
     .AdListItemDescription {
-        @apply font-medium leading-relaxed;
-        color: var(--brutalist-text);
-        font-family: 'Space Grotesk', sans-serif;
+        @apply font-medium leading-relaxed text-lg;
+        color: var(--text-dark);
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        margin: 16px 0;
     }
 
     .AdListItemPrice {
-        @apply text-lg font-bold uppercase tracking-wide;
-        color: var(--brutalist-secondary);
-        font-family: 'JetBrains Mono', monospace;
-        background: rgba(255, 0, 128, 0.1);
-        padding: 4px 8px;
-        border: 2px solid var(--brutalist-secondary);
+        @apply text-xl font-bold;
+        color: var(--warm-brown);
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        background: #fef3c7;
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 2px solid #f59e0b;
         display: inline-block;
-        transform: skew(-2deg);
+        margin-top: 12px;
     }
 
     .AdListEmpty {
-        @apply mt-60 text-center text-lg font-bold uppercase tracking-wider;
-        color: var(--brutalist-warning);
-        font-family: 'JetBrains Mono', monospace;
-        background: rgba(255, 69, 0, 0.1);
-        border: 3px solid var(--brutalist-warning);
-        padding: 20px;
-        transform: rotate(-1deg);
+        @apply mt-32 text-center text-xl font-semibold p-12;
+        color: var(--neutral-gray);
+        font-family: 'Inter', sans-serif;
+        background: var(--white);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px var(--shadow);
     }
 }

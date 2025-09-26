@@ -2,11 +2,11 @@
 
 @layer components {
     .SearchBox {
-        @apply fixed w-full max-w-[450px] mx-auto p-2 mt-2 mb-2 z-20;
-        background: var(--brutalist-surface);
-        border: 3px solid var(--brutalist-primary);
-        box-shadow: 6px 6px 0px var(--brutalist-secondary);
-        transform: skew(-2deg);
+        @apply fixed w-full max-w-2xl mx-auto p-4 mt-4 mb-4 z-20;
+        background: var(--white);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        box-shadow: 0 6px 16px var(--shadow);
     }
 
     .SearchBoxContainer {
@@ -14,49 +14,54 @@
     }
 
     .SearchBoxInput {
-        @apply w-full py-3 px-12 pr-24 text-base font-medium transition-all duration-200;
-        background: var(--brutalist-bg);
-        color: var(--brutalist-text);
-        border: 2px solid var(--brutalist-border);
-        font-family: 'Space Grotesk', sans-serif;
-        transform: skew(2deg);
+        @apply w-full py-4 px-6 pr-32 text-lg font-medium transition-all duration-200;
+        background: var(--light-gray);
+        color: var(--text-dark);
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        font-family: 'Inter', sans-serif;
+        font-size: 18px;
+        min-height: 60px;
     }
 
     .SearchBoxInput:focus {
         outline: none;
-        border-color: var(--brutalist-accent);
-        box-shadow: 0 0 0 3px rgba(255, 255, 0, 0.2);
-        transform: skew(2deg) scale(1.02);
+        border-color: var(--primary-green);
+        box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
+        background: var(--white);
     }
 
     .SearchBoxInput::placeholder {
-        color: #666;
-        font-style: italic;
-        text-transform: uppercase;
-        font-size: 12px;
-        letter-spacing: 1px;
+        color: #9ca3af;
+        font-size: 16px;
+        font-weight: 400;
     }
 
     .SearchBoxButton {
-        @apply absolute right-2 top-1/2 -translate-y-1/2 bg-transparent border-none text-sm cursor-pointer font-bold uppercase tracking-wider transition-all duration-200;
-        color: var(--brutalist-primary);
-        font-family: 'JetBrains Mono', monospace;
-        transform: skew(-5deg);
+        @apply absolute right-3 top-1/2 -translate-y-1/2 bg-transparent border-none text-lg cursor-pointer font-semibold transition-all duration-200;
+        color: var(--primary-green);
+        font-family: 'Inter', sans-serif;
+        padding: 8px 16px;
+        border-radius: 6px;
+        background: var(--light-gray);
+        border: 1px solid var(--border-color);
     }
 
     .SearchBoxButton:hover {
-        color: var(--brutalist-accent);
-        transform: skew(-5deg) scale(1.1);
+        color: var(--white);
+        background: var(--primary-green);
+        border-color: var(--primary-green);
     }
 
     .ClearButton {
-        @apply absolute left-3 top-1/2 -translate-y-1/2 bg-transparent border-none cursor-pointer transition-all duration-200;
-        filter: invert(1) sepia(1) saturate(5) hue-rotate(90deg);
-        transform: skew(5deg);
+        @apply absolute left-4 top-1/2 -translate-y-1/2 bg-transparent border-none cursor-pointer transition-all duration-200;
+        width: 24px;
+        height: 24px;
+        opacity: 0.6;
     }
 
     .ClearButton:hover {
-        filter: invert(1) sepia(1) saturate(5) hue-rotate(270deg);
-        transform: skew(5deg) scale(1.2);
+        opacity: 1;
+        transform: scale(1.1);
     }
 }
