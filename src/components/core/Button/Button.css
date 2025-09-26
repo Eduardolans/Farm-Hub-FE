@@ -2,8 +2,8 @@
 
 @layer components {
     .Button {
-        @apply font-semibold text-lg transition-all duration-200 rounded-lg cursor-pointer;
-        background: var(--primary-green);
+        @apply font-semibold text-lg mt-8 transition-all duration-200 rounded-lg cursor-pointer;
+        background: var(--light-green);
         color: var(--white);
         border: 2px solid var(--primary-green);
         padding: 18px 36px;
@@ -22,11 +22,11 @@
         background: var(--light-green);
         border-color: var(--light-green);
         box-shadow: 0 6px 14px var(--shadow);
-        transform: translateY(-3px);
+        /* transform: translateY(-3px); */
     }
 
     .Button:active {
-        transform: translateY(-1px);
+        /* transform: translateY(-1px); */
         box-shadow: 0 3px 6px var(--shadow);
     }
 
@@ -47,8 +47,8 @@
     /* Variantes de botón */
     .Button.secondary {
         background: var(--white);
-        color: var(--primary-green);
-        border-color: var(--primary-green);
+        color: var(--light-green);
+        border-color: var(--light-green);
     }
 
     .Button.secondary:hover {

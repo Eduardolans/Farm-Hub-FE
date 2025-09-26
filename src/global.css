@@ -64,8 +64,8 @@
     }
 
     .Link {
-        @apply text-lg font-medium underline;
-        color: var(--light-green);
+        @apply text-lg font-medium underline mt-6;
+        color: var(--text-dark);
         text-decoration-thickness: 2px;
         text-underline-offset: 4px;
         transition: all 0.2s ease;
@@ -85,9 +85,10 @@
     }
 
     /* Botones base con alta legibilidad */
-    button, .Button {
+    button,
+    .Button {
         @apply font-semibold text-lg transition-all duration-200 rounded-lg;
-        background: var(--primary-green);
+        background: var(--light-green);
         color: var(--white);
         border: 2px solid var(--primary-green);
         padding: 16px 32px;
@@ -98,19 +99,22 @@
         cursor: pointer;
     }
 
-    button:hover, .Button:hover {
+    button:hover,
+    .Button:hover {
         background: var(--light-green);
         border-color: var(--light-green);
         box-shadow: 0 6px 12px var(--shadow);
-        transform: translateY(-2px);
+        /* transform: translateY(-2px); */
     }
 
-    button:active, .Button:active {
-        transform: translateY(0);
+    button:active,
+    .Button:active {
+        /* transform: translateY(0); */
         box-shadow: 0 2px 4px var(--shadow);
     }
 
-    button:focus, .Button:focus {
+    button:focus,
+    .Button:focus {
         outline: 3px solid var(--accent-orange);
         outline-offset: 2px;
     }
@@ -121,7 +125,7 @@
         background: var(--white);
         color: var(--text-dark);
         border: 2px solid var(--border-color);
-        padding: 16px 20px;
+        /* padding: 16px 20px; */
         font-family: 'Inter', sans-serif;
         font-size: 18px;
         border-radius: 8px;

@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 import logic from '../logic';
 
 import Field from '../components/core/Field/Field';
 import Title from '../components/core/Title/Title';
+import Button from '../components/core/Button/Button';
 import useContext from '../useContext';
 
 import './Register.css';
@@ -12,8 +12,6 @@ import { SystemError } from '../../com/errors';
 
 function Register() {
     const navigate = useNavigate();
-
-    const [message] = useState('');
 
     const { alert } = useContext();
 
@@ -56,8 +54,10 @@ function Register() {
     };
 
     return (
-        <div>
-            <Title className="text-4xl text-green-300">Farm-Hub</Title>
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+            <Title className="text-4xl mt-6 mb-6 text-green-600">
+                Farm-Hub
+            </Title>
 
             <form className="RegisterForm" onSubmit={handleRegisterSubmit}>
                 <Title>Register</Title>
@@ -90,9 +90,8 @@ function Register() {
                     Password Repeat
                 </Field>
 
-                <button type="submit">Register</button>
+                <Button type="submit">Register</Button>
             </form>
-            <p className="ErrorMessage">{message}</p>
             <Link className="Link" to="/login">
                 Login
             </Link>

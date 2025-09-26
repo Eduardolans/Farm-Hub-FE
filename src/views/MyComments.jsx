@@ -73,7 +73,7 @@ export const MyComments = () => {
                     <li key={comment._id} className="UserCommentsContainer">
                         <h3 className="UserCommentsTitle">{comment.title}</h3>
                         <button
-                            className="left-3 right-8 underline text-orange-700"
+                            className="left-3 right-8 underline text-white"
                             onClick={() => handleGoToAd(comment._id)}
                         >
                             Go to Ad

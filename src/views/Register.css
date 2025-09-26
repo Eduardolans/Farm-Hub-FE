@@ -2,13 +2,13 @@
 
 @layer components {
     .RegisterForm {
-        @apply flex flex-col justify-center items-center gap-6 p-12;
+        @apply flex flex-col justify-center items-center p-3;
         background: var(--white);
         border: 2px solid var(--border-color);
         border-radius: 16px;
         box-shadow: 0 8px 24px var(--shadow);
-        margin: 32px;
-        max-width: 520px;
+        margin: 8px;
+        max-width: 480px;
         width: 100%;
     }
 

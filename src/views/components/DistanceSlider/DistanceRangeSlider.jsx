@@ -12,7 +12,7 @@ const DistanceRangeSlider = ({ distance, setDistance, updateUrlParams }) => {
             <input
                 type="range"
                 min="1"
-                max="120"
+                max="150"
                 value={distance}
                 onChange={handleSliderChange}
                 className="slider"
