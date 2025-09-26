@@ -2,7 +2,7 @@
 
 @layer components {
     .Field {
-        @apply flex flex-col gap-3 my-6;
+        @apply flex flex-col gap-0 my-3;
     }
 
     .Field > label {

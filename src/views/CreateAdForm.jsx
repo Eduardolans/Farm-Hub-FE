@@ -64,7 +64,7 @@ export function CreateAdForm() {
 
     return (
         <>
-            <Title className="text-center text-2xl text-black mt-3 mb-1 p-1 underline">
+            <Title className="text-center text-2xl text-black mt-12 mb-6 p-1 underline">
                 Create Ad
             </Title>
             <form onSubmit={handleCreateAd} className="CreateAdFormContainer">

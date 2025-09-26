@@ -2,8 +2,13 @@
 
 @layer components {
     .CreateAdButtonFooter {
-        @apply fixed bottom-0 left-0 right-0 p-6 flex justify-center z-40;
-        background: linear-gradient(to top, var(--white) 0%, rgba(255, 255, 255, 0.9) 70%, transparent 100%);
+        @apply fixed bottom-0 left-0 right-0 p-3 flex justify-center z-40;
+        background: linear-gradient(
+            to top,
+            var(--white) 0%,
+            rgba(255, 255, 255, 0.9) 70%,
+            transparent 100%
+        );
         border-top: 2px solid var(--border-color);
     }
 

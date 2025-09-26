@@ -2,7 +2,7 @@
 
 @layer components {
     .Header {
-        @apply flex w-full fixed justify-between items-center p-6 box-border z-50;
+        @apply flex w-full fixed justify-between items-center p-3 box-border z-50;
         background: var(--white);
         border-bottom: 2px solid var(--border-color);
         box-shadow: 0 4px 12px var(--shadow);
@@ -14,7 +14,7 @@
         color: var(--primary-green);
         font-family: 'Inter', sans-serif;
         font-size: 18px;
-        font-weight: 600;
+        font-weight: 800;
     }
 
     .ButtonsContainer {

@@ -23,7 +23,7 @@
         cursor: pointer;
         margin: 8px 0;
     }
-
+    /* 
     .slider::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
@@ -58,7 +58,7 @@
         background: var(--light-green);
         transform: scale(1.1);
         box-shadow: 0 4px 12px var(--shadow);
-    }
+    } */
 
     .slider-value {
         @apply text-lg font-semibold text-center;

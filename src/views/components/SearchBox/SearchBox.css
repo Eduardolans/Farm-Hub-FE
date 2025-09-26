@@ -2,7 +2,7 @@
 
 @layer components {
     .SearchBox {
-        @apply w-full max-w-4xl mx-auto p-4 mt-4 mb-4 z-20;
+        @apply w-full max-w-4xl mx-auto p-4 mt-12 mb-4 z-20;
         background: var(--white);
         border: 2px solid var(--border-color);
         border-radius: 12px;
@@ -15,9 +15,9 @@
     }
 
     .SearchBoxInput {
-        @apply w-full py-4 px-6 pr-32 text-lg font-medium transition-all duration-200;
+        @apply w-full py-2 px-9 pr-20 text-lg font-medium transition-all duration-200;
         background: var(--light-gray);
-        color: var(--text-dark);
+        color: var(--text-extra-dark);
         border: 2px solid var(--border-color);
         border-radius: 8px;
         font-family: 'Inter', sans-serif;
@@ -39,7 +39,7 @@
     }
 
     .SearchBoxButton {
-        @apply absolute right-3 top-1/2 -translate-y-1/2 bg-transparent border-none text-lg cursor-pointer font-semibold transition-all duration-200;
+        @apply absolute right-0.5 top-1/2 -translate-y-1/2 bg-transparent border-none text-lg cursor-pointer font-semibold transition-all duration-200;
         color: var(--primary-green);
         font-family: 'Inter', sans-serif;
         padding: 8px 16px;
@@ -55,14 +55,15 @@
     }
 
     .ClearButton {
-        @apply absolute left-4 top-1/2 -translate-y-1/2 bg-transparent border-none cursor-pointer transition-all duration-200;
+        @apply absolute left-3 top-1/2 -translate-y-1/2 bg-transparent border-none cursor-pointer;
+
         width: 24px;
         height: 24px;
         opacity: 0.6;
     }
 
-    .ClearButton:hover {
+    /* .ClearButton:hover {
         opacity: 1;
-        transform: scale(1.1);
-    }
+        /* transform: scale(1.1); */
+    /* } */
 }

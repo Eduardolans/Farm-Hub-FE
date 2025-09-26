@@ -45,9 +45,8 @@ export const Login = () => {
     };
 
     return (
-        <div>
-            <Title className="text-4xl text-green-300">Farm-Hub</Title>
-
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+            <Title className="ttext-4xl mb-6 text-green-600">Farm-Hub</Title>
             <form className="LoginForm" onSubmit={handleLoginSubmit}>
                 <Title>Login</Title>
 
