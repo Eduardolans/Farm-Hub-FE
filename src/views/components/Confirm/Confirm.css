@@ -2,11 +2,11 @@
 
 @layer components {
     .Confirm {
-        @apply flex fixed top-auto w-full h-full items-center justify-center left-1;
+        @apply flex fixed top-auto w-full items-center justify-center left-1;
     }
 
     .ConfirmBox {
-        @apply p-[.4rem] bg-gray-100 text-[1rem] border-[1px] border-blue-500 w-[200px] h-[200px] rounded-xl shadow-md z-10 relative;
+        @apply p-[.4rem] bg-gray-100 text-[1rem] border-[1px] border-blue-500 w-[200px] h-[200px] rounded-xl shadow-md z-auto relative;
     }
 
     .Confirm p {
